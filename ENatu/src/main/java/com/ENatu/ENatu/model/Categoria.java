@@ -14,9 +14,11 @@ public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idCategoria;
-	private @NotNull String nomeCategoria;
+	private @NotNull (message ="Passar um valor aqui,não pode ser nulo.") String nomeCategoria;
 	private boolean autorizado;
-	private @NotNull String descricao;
+	private @NotNull (message ="Passar um valor aqui,não pode ser nulo.") String descricao;
+	
+	//Inserir a relaçao entre Categoria e Produto
 	public long getIdCategoria() {
 		return idCategoria;
 	}
