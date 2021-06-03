@@ -1,14 +1,10 @@
 package com.ENatu.ENatu.model;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -19,17 +15,10 @@ public class Produtos {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private long idProduto;
-private @NotNull String nomeProduto;
-private @NotNull String descricao;
-private @NotNull String marca;
-private @NotNull double preco;
-
-@ManyToOne
-private Usuario criador;
-
-@ManyToMany
-private List<Usuario> compradores = new ArrayList<>();
-
+private @NotNull (message ="Passar um valor aqui,não pode ser nulo.") String nomeProduto;
+private @NotNull (message ="Passar um valor aqui,não pode ser nulo.") String descricao;
+private @NotNull (message ="Passar um valor aqui,não pode ser nulo.") String marca;
+private @NotNull (message ="Passar um valor aqui,não pode ser nulo.") double preco;
 
 public long getIdProduto() {
 	return idProduto;
@@ -62,5 +51,6 @@ public double getPreco() {
 public void setPreco(double preco) {
 	this.preco = preco;
 }
+
 
 }
