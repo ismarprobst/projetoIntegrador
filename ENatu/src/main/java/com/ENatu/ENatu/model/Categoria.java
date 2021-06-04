@@ -1,11 +1,18 @@
 package com.ENatu.ENatu.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "Categoria")
@@ -18,7 +25,20 @@ public class Categoria {
 	private boolean autorizado;
 	private @NotNull (message ="Passar um valor aqui,não pode ser nulo.") String descricao;
 	
-	//Inserir a relaçao entre Categoria e Produto
+
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("categoria")
+	private List<Produtos> produtosDaCategoria = new ArrayList<>();
+	
+	
+	
+	
+	public List<Produtos> getProdutosDaCategoria() {
+		return produtosDaCategoria;
+	}
+	public void setProdutosDaCategoria(List<Produtos> produtosDaCategoria) {
+		this.produtosDaCategoria = produtosDaCategoria;
+	}
 	public long getIdCategoria() {
 		return idCategoria;
 	}
