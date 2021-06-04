@@ -23,6 +23,9 @@ public class Usuario {
 	@Size(min = 6) 
 	String senha;
 	
+	
+	
+	
 	public long getIdUsuario() {
 		return idUsuario;
 	}
