@@ -25,13 +25,9 @@ public class Categoria {
 	private boolean autorizado;
 	private @NotNull (message ="Passar um valor aqui,não pode ser nulo.") String descricao;
 	
-
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("categoria")
 	private List<Produtos> produtosDaCategoria = new ArrayList<>();
-	
-	
-	
 	
 	public List<Produtos> getProdutosDaCategoria() {
 		return produtosDaCategoria;

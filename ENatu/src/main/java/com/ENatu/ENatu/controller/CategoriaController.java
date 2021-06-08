@@ -17,63 +17,46 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ENatu.ENatu.model.Categoria;
-import com.ENatu.ENatu.repository.CategoriaRepository;
-
+import com.ENatu.ENatu.services.CategoriaServices;
 
 @RestController
 @RequestMapping("/categoria")
 public class CategoriaController {
 
-
-	@Autowired
-	private CategoriaRepository repositoryC;
 	
-	@GetMapping("/todasCategorias")
-	public ResponseEntity<List<Categoria>> pegarTodasCategorias(){
-		List<Categoria> listaDeTodasCategorias = repositoryC.findAll();
-		if(listaDeTodasCategorias.isEmpty()) {
-			return ResponseEntity.status(204).build();
-			
-			}else {
-				return ResponseEntity.status(200).body(listaDeTodasCategorias);
-			}
+	private @Autowired CategoriaServices services;
+	
+	@GetMapping("/todas")
+	public ResponseEntity<List<Categoria>> pegarCategorias(){
+		return services.pegarTodos();
 	}
 	
-	@GetMapping("/{idCategoria}")
+	@GetMapping("/id/{idCategoria}")
 	public ResponseEntity<Categoria> GetById(@Valid @PathVariable long idCategoria) {
-		return repositoryC.findById(idCategoria)
-				.map(resp -> ResponseEntity.ok(resp))
-				.orElse(ResponseEntity.notFound().build());
+		return services.pegarPorId(idCategoria);
 	}
 	
-	@GetMapping("/nomeCategoria")
-	public ResponseEntity<Object> findByCategoria(@RequestParam(defaultValue = "") String nomeCategoria){
-		
-		List<Categoria> listaDeCategorias = repositoryC.findAllByNomeCategoriaContainingIgnoreCase(nomeCategoria);
-		
-		if(listaDeCategorias.isEmpty()) {
-			
-			return ResponseEntity.status(204).build();
-		} else {
-			
-			return ResponseEntity.status(200).body(listaDeCategorias);
-		}
-	}
 	
+	@GetMapping("/nome")
+	public ResponseEntity<List<Categoria>> findByNome(@RequestParam(defaultValue = "") String nomeCategoria){
+		return services.pegarNomeCategoria(nomeCategoria);
+		
+	}
 	
 	@PostMapping("/salvar")
-	public ResponseEntity<Categoria> post (@Valid @RequestBody Categoria nomeCategoria){
-		return ResponseEntity.status(201).body(repositoryC.save(nomeCategoria));
-
+	public ResponseEntity<Categoria> salvarCategoria 
+	(@Valid @RequestBody Categoria novaCategoria) {
+		return services.salvarCategoria(novaCategoria);
 	}
-	@PutMapping("/atualizar")
-	public ResponseEntity<Categoria> put (@Valid @RequestBody Categoria nomeCategoria){
-		return ResponseEntity.status(200).body(repositoryC.save(nomeCategoria));
-
+	
+	@PutMapping("/atualizar/{idCategoria}")
+	public ResponseEntity<Categoria> putCategoria ( @PathVariable long idCategoria,@Valid @RequestBody Categoria alterCategoria){
+		return services.atualizarCategoria(idCategoria,alterCategoria);
 	}
 	
 	@DeleteMapping("/deletar/{idCategoria}")
-	public void delete(@PathVariable long idCategoria) {
-		repositoryC.deleteById(idCategoria);
-	}
+	public ResponseEntity<Object> deletarCategoria(@PathVariable long idCategoria) {
+        return services.deletarCategoria(idCategoria);
+    }
 }
+

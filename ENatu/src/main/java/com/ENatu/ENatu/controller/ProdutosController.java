@@ -17,63 +17,45 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ENatu.ENatu.model.Produtos;
-import com.ENatu.ENatu.repository.ProdutosRepository;
-
+import com.ENatu.ENatu.services.ProdutoServices;
 
 
 @RestController
 @RequestMapping("/produto")
 public class ProdutosController {
 
-		@Autowired
-		private ProdutosRepository repositoryP;
+		private @Autowired ProdutoServices services;
 		
-		@GetMapping("/listaProdutos")
-		public ResponseEntity<List<Produtos>> pegarTodosProdutos(){
-			List<Produtos> listaDeProdutos = repositoryP.findAll();
-			if(listaDeProdutos.isEmpty()) {
-				return ResponseEntity.status(204).build();
-				
-				}else {
-					return ResponseEntity.status(200).body(listaDeProdutos);
-				}
+		@GetMapping("/todos")
+		public ResponseEntity<List<Produtos>> pegarProdutos(){
+			return services.pegarTodos();
 		}
 		
 		@GetMapping("/id/{idProduto}")
 		public ResponseEntity<Produtos> GetById(@Valid @PathVariable long idProduto) {
-			return repositoryP.findById(idProduto)
-					.map(resp -> ResponseEntity.ok(resp))
-					.orElse(ResponseEntity.notFound().build());
+			return services.pegarPorId(idProduto);
 		}
 		
-		@GetMapping("/pesquisa/nome")
-		public ResponseEntity<Object> findByNomeProduto(@RequestParam(defaultValue = "")String nomeProduto){
+		@GetMapping("/nome")
+		public ResponseEntity<List<Produtos>> findByNome(@RequestParam(defaultValue = "") String nomeProduto){
+			return services.pegarNomeProduto(nomeProduto);
 			
-			List<Produtos> listaDeProdutos = repositoryP.findAllByNomeProdutoContainingIgnoreCase(nomeProduto);
-			
-			if(listaDeProdutos.isEmpty()) {
-				return ResponseEntity.status(204).build();
-			} else {
-				return ResponseEntity.status(200).body(listaDeProdutos);
-			}
-		}
-		
-		
+		}	
 		
 		@PostMapping("/salvar")
-		public ResponseEntity<Produtos> post (@Valid @RequestBody Produtos nomeProduto){
-			return ResponseEntity.status(201).body(repositoryP.save(nomeProduto));
-
-		}
-		@PutMapping("/atualizar")
-		public ResponseEntity<Produtos> put (@Valid @RequestBody Produtos nomeProduto){
-			return ResponseEntity.status(200).body(repositoryP.save(nomeProduto));
-
+		public ResponseEntity<Produtos> salvarProduto 
+		(@Valid @RequestBody Produtos novoProduto) {
+			return services.salvarProduto(novoProduto);
 		}
 		
-		@DeleteMapping("/{idProduto}")
-		public void delete(@PathVariable long idProduto) {
-			repositoryP.deleteById(idProduto);
+		@PutMapping("/atualizar/{idProduto}")
+		public ResponseEntity<Produtos> putProduto ( @PathVariable long idProduto,@Valid @RequestBody Produtos alterProduto){
+			return services.atualizarProduto(idProduto,alterProduto);
 		}
+		
+		@DeleteMapping("/deletar/{idProduto}")
+		public ResponseEntity<Object> deletarProduto(@PathVariable long idProduto) {
+	        return services.deletarProduto(idProduto);
+	    }
 	}
 
