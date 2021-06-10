@@ -1,12 +1,16 @@
 package com.ENatu.ENatu.services;
 
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.ENatu.ENatu.model.UserLogin;
 import com.ENatu.ENatu.model.Usuario;
 import com.ENatu.ENatu.repository.UsuarioRepository;
 
@@ -43,13 +47,20 @@ public class UsuarioServices {
 		}
 	}
 
-	public ResponseEntity<Usuario> salvarUsuario(Usuario novoUsuario) {
+	public ResponseEntity<Usuario> cadastrarUsuario(Usuario novoUsuario) {
 		Optional<Usuario> usuarioExistente = repository.findByEmail(novoUsuario.getEmail());
 
 		if (usuarioExistente.isPresent()) {
 			return ResponseEntity.status(406).build();
 		} else {
-			return ResponseEntity.status(201).body(repository.save(novoUsuario));
+
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+			String senhaEncoder = encoder.encode(novoUsuario.getSenha());
+			novoUsuario.setSenha(senhaEncoder);
+
+			return ResponseEntity.ok(repository.save(novoUsuario));
+			
 		}
 	}
 
@@ -61,7 +72,7 @@ public class UsuarioServices {
 
 			idUsuarioExiste.get().setNome(alterUsuario.getNome());
 			idUsuarioExiste.get().setSenha(alterUsuario.getSenha());
-			idUsuarioExiste.get().setEmail(alterUsuario.getEmail());
+			/*idUsuarioExiste.get().setEmail(alterUsuario.getEmail());*/
 			return ResponseEntity.status(202).body(repository.save(idUsuarioExiste.get()));
 
 		} else {
@@ -79,5 +90,28 @@ public class UsuarioServices {
 			return ResponseEntity.status(200).build();
 		}
 	}
+
+	public Optional<UserLogin> Logar(Optional<UserLogin> user) {
+
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		Optional<Usuario> usuario = repository.findByEmail(user.get().getEmail());
+
+		if (usuario.isPresent()) {
+			if (encoder.matches(user.get().getSenha(), usuario.get().getSenha())) {
+				String auth = user.get().getEmail() + ":" + user.get().getSenha();
+				byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
+				String authHeader = "Basic " + new String(encodedAuth);
+
+				user.get().setToken(authHeader);
+				user.get().setNome(usuario.get().getNome());
+
+				return user;
+			}
+
+		}
+		return null;
+        }
+	
+	
 
 }
