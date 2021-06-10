@@ -47,11 +47,11 @@ public class ProdutoServices {
 	}
 	
 	
-	public ResponseEntity <Produtos> salvarProduto(Produtos novoProduto){
+	public ResponseEntity <Object> salvarProduto(Produtos novoProduto){
 		Optional<Produtos> produtoExistente = repository.findByNomeProduto(novoProduto.getNomeProduto());
 		
 		if(produtoExistente.isPresent()) {
-			return ResponseEntity.status(406).build();
+			return ResponseEntity.status(406).body("já cadastrado");
 		}else {
 			return ResponseEntity.status(201).body(repository.save(novoProduto)); 
 		}		

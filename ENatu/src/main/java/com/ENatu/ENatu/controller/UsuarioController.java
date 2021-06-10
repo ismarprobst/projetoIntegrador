@@ -1,11 +1,12 @@
 package com.ENatu.ENatu.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ENatu.ENatu.model.UserLogin;
 import com.ENatu.ENatu.model.Usuario;
 import com.ENatu.ENatu.services.UsuarioServices;
 
@@ -24,41 +26,42 @@ import com.ENatu.ENatu.services.UsuarioServices;
 @RequestMapping("/usuario")
 public class UsuarioController {
 
-	
 	private @Autowired UsuarioServices services;
-	
-	
+
 	@GetMapping("/todosUsuarios")
-	public ResponseEntity<List<Usuario>> pegarUsuarios(){
+	public ResponseEntity<List<Usuario>> pegarUsuarios() {
 		return services.pegarTodos();
 	}
-	
-	
+
 	@GetMapping("/id/{idUsuario}")
 	public ResponseEntity<Usuario> GetById(@Valid @PathVariable long idUsuario) {
 		return services.pegarPorId(idUsuario);
 	}
 
-	
 	@GetMapping("/nome")
-	public ResponseEntity<List<Usuario>> findByNome(@RequestParam(defaultValue = "") String nome){
+	public ResponseEntity<List<Usuario>> findByNome(@RequestParam(defaultValue = "") String nome) {
 		return services.pegarNomeUsuario(nome);
-		
+
 	}
-	
-	@PostMapping("/salvar")
-	public ResponseEntity<Usuario> salvarUsuario 
-	(@Valid @RequestBody Usuario novoUsuario) {
-		return services.salvarUsuario(novoUsuario);
-	}
-	
+
 	@PutMapping("/alterar/{idUsuario}")
-	public ResponseEntity<Usuario> putUsuario ( @PathVariable long idUsuario,@Valid @RequestBody Usuario alterUsuario){
-		return services.atualizarUsuario(idUsuario,alterUsuario);
+	public ResponseEntity<Usuario> putUsuario(@PathVariable long idUsuario, @Valid @RequestBody Usuario alterUsuario) {
+		return services.atualizarUsuario(idUsuario, alterUsuario);
 	}
-	
+
 	@DeleteMapping("/deletar/{idUsuario}")
-    public ResponseEntity<Object> deleteUsuario(@PathVariable long idUsuario) {
-        return services.deletarUsuario(idUsuario);
-    }
+	public ResponseEntity<Object> deleteUsuario(@PathVariable long idUsuario) {
+		return services.deletarUsuario(idUsuario);
+	}
+
+	@PostMapping("/logar")
+	public ResponseEntity<UserLogin> Autentication(@RequestBody Optional<UserLogin> user) {
+		return services.Logar(user).map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+	}
+
+	@PostMapping("/cadastrar")
+	public ResponseEntity<Usuario> Post(@Valid @RequestBody Usuario usuario) {
+		return services.cadastrarUsuario(usuario);
+	}
 }
