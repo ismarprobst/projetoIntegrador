@@ -23,10 +23,10 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idUsuario;
-	private @NotNull (message ="Passar um valor aqui,não pode ser nulo.")  String nome; 
-	private @NotNull (message ="Passar um valor aqui,não pode ser nulo.") String email;
+	private @NotNull(message ="Passar um valor aqui,não pode ser nulo.")  String nome; 
+	private @NotNull(message ="Passar um valor aqui,não pode ser nulo.") @Size(min=5,max=100) String email;
 	
-	private  @NotNull (message ="Passar um valor aqui,não pode ser nulo. Mínimo de 6 caracteres") 
+	private  @NotNull(message ="Passar um valor aqui,não pode ser nulo. Mínimo de 6 caracteres") 
 	@Size(min = 6) 
 	String senha;
 	

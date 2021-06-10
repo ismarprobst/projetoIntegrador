@@ -43,7 +43,7 @@ public class ProdutosController {
 		}	
 		
 		@PostMapping("/salvar")
-		public ResponseEntity<Produtos> salvarProduto 
+		public ResponseEntity<Object> salvarProduto 
 		(@Valid @RequestBody Produtos novoProduto) {
 			return services.salvarProduto(novoProduto);
 		}
