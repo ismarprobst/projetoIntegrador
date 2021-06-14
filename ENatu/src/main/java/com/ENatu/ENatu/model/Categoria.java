@@ -21,45 +21,52 @@ public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idCategoria;
-	private @NotNull (message ="Passar um valor aqui,não pode ser nulo.") String nomeCategoria;
+	private @NotNull(message = "Passar um valor aqui,não pode ser nulo.") String nomeCategoria;
 	private boolean autorizado;
-	private @NotNull (message ="Passar um valor aqui,não pode ser nulo.") String descricao;
-	
+	private @NotNull(message = "Passar um valor aqui,não pode ser nulo.") String descricao;
+
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("categoria")
 	private List<Produtos> produtosDaCategoria = new ArrayList<>();
-	
+
 	public List<Produtos> getProdutosDaCategoria() {
 		return produtosDaCategoria;
 	}
+
 	public void setProdutosDaCategoria(List<Produtos> produtosDaCategoria) {
 		this.produtosDaCategoria = produtosDaCategoria;
 	}
+
 	public long getIdCategoria() {
 		return idCategoria;
 	}
+
 	public void setIdCategoria(long idCategoria) {
 		this.idCategoria = idCategoria;
 	}
+
 	public String getNomeCategoria() {
 		return nomeCategoria;
 	}
+
 	public void setNomeCategoria(String nomeCategoria) {
 		this.nomeCategoria = nomeCategoria;
 	}
+
 	public boolean isAutorizado() {
 		return autorizado;
 	}
+
 	public void setAutorizado(boolean autorizado) {
 		this.autorizado = autorizado;
 	}
+
 	public String getDescricao() {
 		return descricao;
 	}
+
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
-	
-	
+
 }

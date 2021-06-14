@@ -1,4 +1,5 @@
 package com.ENatu.ENatu.security;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -7,9 +8,7 @@ import com.ENatu.ENatu.model.Usuario;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
-
-public class UserDetailsImpl implements UserDetails{
+public class UserDetailsImpl implements UserDetails {
 	private static final long serialVersionUID = 1L;
 
 	private String userName;
@@ -18,10 +17,11 @@ public class UserDetailsImpl implements UserDetails{
 
 	public UserDetailsImpl(Usuario user) {
 		this.userName = user.getEmail();
-		this.password = user.getSenha();		
+		this.password = user.getSenha();
 	}
 
-	public UserDetailsImpl() {}
+	public UserDetailsImpl() {
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
