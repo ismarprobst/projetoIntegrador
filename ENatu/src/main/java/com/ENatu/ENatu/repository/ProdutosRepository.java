@@ -8,11 +8,10 @@ import org.springframework.stereotype.Repository;
 
 import com.ENatu.ENatu.model.Produtos;
 
-
 @Repository
 public interface ProdutosRepository extends JpaRepository<Produtos, Long> {
 
-	List<Produtos> findAllByNomeProdutoContainingIgnoreCase (String nomeProduto);
-	
+	List<Produtos> findAllByNomeProdutoContainingIgnoreCase(String nomeProduto);
+
 	Optional<Produtos> findByNomeProduto(String nomeProduto);
 }

@@ -21,22 +21,21 @@ public class Venda {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idVenda;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date = new java.sql.Date(System.currentTimeMillis());
-	
+
 	@NotNull
 	private String metodoPagamento;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_usuario")
-	@JsonIgnoreProperties({"senha","minhasCompras"})
+	@JsonIgnoreProperties({ "senha", "minhasCompras" })
 	private Usuario usuario;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_produtos")
 	private Produtos produtos;
-
 
 	public Long getIdVenda() {
 		return idVenda;
@@ -77,6 +76,5 @@ public class Venda {
 	public void setMetodoPagamento(String metodoPagamento) {
 		this.metodoPagamento = metodoPagamento;
 	}
-	
-	
+
 }

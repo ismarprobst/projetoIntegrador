@@ -23,40 +23,37 @@ import com.ENatu.ENatu.services.CategoriaServices;
 @RequestMapping("/categoria")
 public class CategoriaController {
 
-	
 	private @Autowired CategoriaServices services;
-	
+
 	@GetMapping("/todas")
-	public ResponseEntity<List<Categoria>> pegarCategorias(){
+	public ResponseEntity<List<Categoria>> pegarCategorias() {
 		return services.pegarTodos();
 	}
-	
+
 	@GetMapping("/id/{idCategoria}")
 	public ResponseEntity<Categoria> GetById(@Valid @PathVariable long idCategoria) {
 		return services.pegarPorId(idCategoria);
 	}
-	
-	
+
 	@GetMapping("/nome")
-	public ResponseEntity<List<Categoria>> findByNome(@RequestParam(defaultValue = "") String nomeCategoria){
+	public ResponseEntity<List<Categoria>> findByNome(@RequestParam(defaultValue = "") String nomeCategoria) {
 		return services.pegarNomeCategoria(nomeCategoria);
-		
+
 	}
-	
+
 	@PostMapping("/salvar")
-	public ResponseEntity<Categoria> salvarCategoria 
-	(@Valid @RequestBody Categoria novaCategoria) {
+	public ResponseEntity<Categoria> salvarCategoria(@Valid @RequestBody Categoria novaCategoria) {
 		return services.salvarCategoria(novaCategoria);
 	}
-	
+
 	@PutMapping("/atualizar/{idCategoria}")
-	public ResponseEntity<Categoria> putCategoria ( @PathVariable long idCategoria,@Valid @RequestBody Categoria alterCategoria){
-		return services.atualizarCategoria(idCategoria,alterCategoria);
+	public ResponseEntity<Categoria> putCategoria(@PathVariable long idCategoria,
+			@Valid @RequestBody Categoria alterCategoria) {
+		return services.atualizarCategoria(idCategoria, alterCategoria);
 	}
-	
+
 	@DeleteMapping("/deletar/{idCategoria}")
 	public ResponseEntity<Object> deletarCategoria(@PathVariable long idCategoria) {
-        return services.deletarCategoria(idCategoria);
-    }
+		return services.deletarCategoria(idCategoria);
+	}
 }
-

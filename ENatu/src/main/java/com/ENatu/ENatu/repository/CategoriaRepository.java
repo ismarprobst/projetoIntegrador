@@ -11,7 +11,7 @@ import com.ENatu.ENatu.model.Categoria;
 @Repository
 public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
 
-List<Categoria> findAllByNomeCategoriaContainingIgnoreCase (String nomeCategoria);
+	List<Categoria> findAllByNomeCategoriaContainingIgnoreCase(String nomeCategoria);
 
 	Optional<Categoria> findByNomeCategoria(String nomeCategoria);
 }

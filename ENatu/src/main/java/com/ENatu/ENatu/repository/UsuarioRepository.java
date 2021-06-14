@@ -9,10 +9,10 @@ import org.springframework.stereotype.Repository;
 import com.ENatu.ENatu.model.Usuario;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario,Long> {
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
-	List<Usuario> findAllByNomeContainingIgnoreCase (String nome);
-	
+	List<Usuario> findAllByNomeContainingIgnoreCase(String nome);
+
 	Optional<Usuario> findByEmail(String email);
-	
+
 }

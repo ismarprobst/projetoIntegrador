@@ -10,11 +10,10 @@ import org.springframework.stereotype.Service;
 import com.ENatu.ENatu.model.Categoria;
 import com.ENatu.ENatu.repository.CategoriaRepository;
 
-
 @Service
 public class CategoriaServices {
 	private @Autowired CategoriaRepository repository;
-	
+
 	public ResponseEntity<List<Categoria>> pegarTodos() {
 		List<Categoria> listaDeCategorias = repository.findAll();
 		if (listaDeCategorias.isEmpty()) {
@@ -24,12 +23,12 @@ public class CategoriaServices {
 			return ResponseEntity.status(200).body(listaDeCategorias);
 		}
 	}
-	
+
 	public ResponseEntity<Categoria> pegarPorId(long idCategoria) {
 		return repository.findById(idCategoria).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
-	
+
 	public ResponseEntity<List<Categoria>> pegarNomeCategoria(String nomeCategoria) {
 
 		List<Categoria> listaDeCategorias = repository.findAllByNomeCategoriaContainingIgnoreCase(nomeCategoria);
@@ -42,20 +41,19 @@ public class CategoriaServices {
 			return ResponseEntity.status(200).body(listaDeCategorias);
 		}
 	}
-	
-	public ResponseEntity <Categoria> salvarCategoria(Categoria novaCategoria){
+
+	public ResponseEntity<Categoria> salvarCategoria(Categoria novaCategoria) {
 		Optional<Categoria> categoriaExistente = repository.findByNomeCategoria(novaCategoria.getNomeCategoria());
-		
-		if(categoriaExistente.isPresent()) {
+
+		if (categoriaExistente.isPresent()) {
 			return ResponseEntity.status(406).build();
-		}else {
-			return ResponseEntity.status(201).body(repository.save(novaCategoria)); 
-		}		
+		} else {
+			return ResponseEntity.status(201).body(repository.save(novaCategoria));
+		}
 	}
-	
+
 	public ResponseEntity<Categoria> atualizarCategoria(Long idCategoria, Categoria alterCategoria) {
 		Optional<Categoria> idCategoriaExistente = repository.findById(idCategoria);
-		
 
 		if (idCategoriaExistente.isPresent()) {
 
@@ -67,15 +65,15 @@ public class CategoriaServices {
 			return ResponseEntity.status(405).build();
 		}
 	}
-	
-	public ResponseEntity<Object> deletarCategoria(Long idCategoria) {
-        Optional<Categoria> CategoriaExistente = repository.findById(idCategoria);
 
-        if (CategoriaExistente.isEmpty()) {
-            return ResponseEntity.status(400).build();
-        } else {
-            repository.deleteById(idCategoria);
-            return ResponseEntity.status(200).build();
-        }
-    }
+	public ResponseEntity<Object> deletarCategoria(Long idCategoria) {
+		Optional<Categoria> CategoriaExistente = repository.findById(idCategoria);
+
+		if (CategoriaExistente.isEmpty()) {
+			return ResponseEntity.status(400).build();
+		} else {
+			repository.deleteById(idCategoria);
+			return ResponseEntity.status(200).build();
+		}
+	}
 }
