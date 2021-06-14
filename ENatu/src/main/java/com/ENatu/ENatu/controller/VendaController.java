@@ -21,30 +21,27 @@ import com.ENatu.ENatu.services.VendaServices;
 @RequestMapping("/pedido")
 public class VendaController {
 
-	
 	private @Autowired VendaServices services;
-	
+
 	@GetMapping("/todos")
-	public ResponseEntity<List<Venda>> pegarVendas(){
+	public ResponseEntity<List<Venda>> pegarVendas() {
 		return services.pegarVendas();
 	}
-	
+
 	@GetMapping("/id/{idVenda}")
 	public ResponseEntity<Venda> PegarIdVenda(@Valid @PathVariable long idVenda) {
 		return services.PegarIdVenda(idVenda);
 	}
-	
-	
+
 	@PostMapping("/novo/usuario/{id_usuario}/produto/{id_produto}")
-	public ResponseEntity<Venda> novaVenda (@Valid @RequestBody Venda novaVenda,
-			@PathVariable(value = "id_usuario") Long idUsuario,
-			@PathVariable(value = "id_produto") Long idProduto){
-		
+	public ResponseEntity<Venda> novaVenda(@Valid @RequestBody Venda novaVenda,
+			@PathVariable(value = "id_usuario") Long idUsuario, @PathVariable(value = "id_produto") Long idProduto) {
+
 		return services.novaVenda(idProduto, idUsuario, novaVenda);
 	}
-	
+
 	@DeleteMapping("/deletarPedido/{idVenda}")
 	public ResponseEntity<Object> deletarPedido(@PathVariable long idVenda) {
-        return services.deletarVenda(idVenda);
-    }
+		return services.deletarVenda(idVenda);
+	}
 }

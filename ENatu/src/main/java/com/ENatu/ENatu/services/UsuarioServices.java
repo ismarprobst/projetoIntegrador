@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -28,12 +29,12 @@ public class UsuarioServices {
 			return ResponseEntity.status(200).body(listaDeNomes);
 		}
 	}
-	
+
 	public ResponseEntity<Usuario> pegarPorId(long idUsuario) {
 		return repository.findById(idUsuario).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
-	
+
 	public ResponseEntity<List<Usuario>> pegarNomeUsuario(String nome) {
 
 		List<Usuario> listaDeNomes = repository.findAllByNomeContainingIgnoreCase(nome);
@@ -60,7 +61,7 @@ public class UsuarioServices {
 			novoUsuario.setSenha(senhaEncoder);
 
 			return ResponseEntity.ok(repository.save(novoUsuario));
-			
+
 		}
 	}
 
@@ -72,7 +73,7 @@ public class UsuarioServices {
 
 			idUsuarioExiste.get().setNome(alterUsuario.getNome());
 			idUsuarioExiste.get().setSenha(alterUsuario.getSenha());
-			/*idUsuarioExiste.get().setEmail(alterUsuario.getEmail());*/
+			/* idUsuarioExiste.get().setEmail(alterUsuario.getEmail()); */
 			return ResponseEntity.status(202).body(repository.save(idUsuarioExiste.get()));
 
 		} else {
@@ -91,7 +92,7 @@ public class UsuarioServices {
 		}
 	}
 
-	public Optional<UserLogin> Logar(Optional<UserLogin> user) {
+	public ResponseEntity<Optional<UserLogin>>logar(Optional<UserLogin> user) {
 
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Optional<Usuario> usuario = repository.findByEmail(user.get().getEmail());
@@ -105,13 +106,14 @@ public class UsuarioServices {
 				user.get().setToken(authHeader);
 				user.get().setNome(usuario.get().getNome());
 
-				return user;
+				return ResponseEntity.status(HttpStatus.OK).body(user);
+			} else {
+				return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
 			}
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
 
 		}
-		return null;
-        }
+	}
 	
-	
-
 }

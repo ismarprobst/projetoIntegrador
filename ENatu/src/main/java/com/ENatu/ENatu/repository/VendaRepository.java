@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.ENatu.ENatu.model.Venda;
 
 @Repository
-public interface VendaRepository extends JpaRepository<Venda, Long>{
+public interface VendaRepository extends JpaRepository<Venda, Long> {
 
-	
 }

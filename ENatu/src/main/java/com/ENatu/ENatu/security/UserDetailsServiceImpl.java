@@ -2,7 +2,6 @@ package com.ENatu.ENatu.security;
 
 import java.util.Optional;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,14 +16,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired
 	private UsuarioRepository userRepository;
-	
+
 	@Override
-	public UserDetails loadUserByUsername(String email) throws  UsernameNotFoundException{
-		Optional<Usuario>user=userRepository.findByEmail(email);
-		user.orElseThrow(()-> new UsernameNotFoundException(email+ "not foun."));
-		
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		Optional<Usuario> user = userRepository.findByEmail(email);
+		user.orElseThrow(() -> new UsernameNotFoundException(email + "not foun."));
+
 		return user.map(UserDetailsImpl::new).get();
 	}
 
 }
-
