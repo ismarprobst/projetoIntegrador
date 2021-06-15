@@ -80,6 +80,25 @@ public class UsuarioServices {
 			return ResponseEntity.status(405).build();
 		}
 	}
+	
+	/**
+	 * Metodo utilizado para alterar um usuario
+	 * @param usuarioParaAlterar
+	 * @return Uma entidade Usuario
+	 * @since 1.0
+	 * @author Gabriel
+	 */
+	public ResponseEntity<Usuario> atualizarUsuario(Usuario usuarioParaAlterar){
+		return repository.findByEmail(usuarioParaAlterar.getEmail())
+				.map(usuarioExistente -> {
+					usuarioExistente.setNome(usuarioParaAlterar.getNome());
+					BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+					String senhaCriptografada = encoder.encode(usuarioParaAlterar.getSenha());
+					usuarioExistente.setSenha(senhaCriptografada);
+					return ResponseEntity.status(201).body(repository.save(usuarioExistente));
+				})
+				.orElse(ResponseEntity.status(401).build());
+	}
 
 	public ResponseEntity<Object> deletarUsuario(Long idUsuario) {
 		Optional<Usuario> idUsuarioExistente = repository.findById(idUsuario);
@@ -114,6 +133,34 @@ public class UsuarioServices {
 			return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
 
 		}
+	}
+	
+	/**
+	 * Metodo utilizado para fazer Autenticação do usuario
+	 * @param usuarioParaAutenticar do tipo UserLogin
+	 * @return UserLogin com atributos preenchidos
+	 * @since 1.0
+	 * @author Gabriel
+	 */
+	public ResponseEntity<?> logarUsuario(UserLogin usuarioParaAutenticar){
+		return repository.findByEmail(usuarioParaAutenticar.getEmail())
+				.map(usuarioExistente -> {
+					BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+					
+					if (encoder.matches(usuarioParaAutenticar.getSenha(), usuarioExistente.getSenha())) {
+						String estruturaBasic = usuarioParaAutenticar.getEmail() + ":" + usuarioParaAutenticar.getSenha();
+						byte[] autorizacaoBasic64 = Base64.encodeBase64(estruturaBasic.getBytes(Charset.forName("US-ASCII")));
+						String autorizacaoHeader = "Basic " + new String(autorizacaoBasic64);
+						
+						usuarioParaAutenticar.setToken(autorizacaoHeader);
+						usuarioParaAutenticar.setNome(usuarioExistente.getNome());
+						usuarioParaAutenticar.setSenha(usuarioExistente.getSenha());
+						return ResponseEntity.status(200).body(usuarioParaAutenticar);					
+					} else {
+						return ResponseEntity.status(401).build();
+					}
+				})
+				.orElse(ResponseEntity.status(401).build());
 	}
 	
 }
