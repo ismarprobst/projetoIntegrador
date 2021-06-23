@@ -1,11 +1,15 @@
 package com.ENatu.ENatu.model;
 
+import javax.validation.constraints.NotNull;
+
 public class UserLogin {
 
 	private String nome;
 
+	@NotNull
 	private String email;
 
+	@NotNull
 	private String senha;
 
 	private String token;

@@ -1,8 +1,6 @@
 package com.ENatu.ENatu.controller;
 
 import java.util.List;
-import java.util.Optional;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,9 +41,9 @@ public class UsuarioController {
 
 	}
 
-	@PutMapping("/alterar/{idUsuario}")
-	public ResponseEntity<Usuario> putUsuario(@PathVariable long idUsuario, @Valid @RequestBody Usuario alterUsuario) {
-		return services.atualizarUsuario(idUsuario, alterUsuario);
+	@PutMapping("/alterar")
+	public ResponseEntity<Usuario> putUsuario(@Valid @RequestBody Usuario alterUsuario) {
+		return services.atualizarUsuario(alterUsuario);
 	}
 
 	@DeleteMapping("/deletar/{idUsuario}")
@@ -54,8 +52,8 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/logar")
-	public ResponseEntity<Optional<UserLogin>> Autentication(@RequestBody Optional<UserLogin> user) {
-		return services.logar(user);
+	public ResponseEntity<?> Autentication(@Valid @RequestBody UserLogin usuarioParaAutenticar) {
+		return services.logarUsuario(usuarioParaAutenticar);
 	}
 
 	@PostMapping("/cadastrar")
