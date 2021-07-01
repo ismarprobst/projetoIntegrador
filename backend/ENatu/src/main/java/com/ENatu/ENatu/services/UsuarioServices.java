@@ -157,6 +157,7 @@ public class UsuarioServices {
 				usuarioParaAutenticar.setToken(autorizacaoHeader);
 				usuarioParaAutenticar.setNome(usuarioExistente.getNome());
 				usuarioParaAutenticar.setSenha(usuarioExistente.getSenha());
+				usuarioParaAutenticar.setId(usuarioExistente.getIdUsuario());
 				return ResponseEntity.status(200).body(usuarioParaAutenticar);
 			} else {
 				return ResponseEntity.status(401).build();
