@@ -27,12 +27,21 @@ export class AdminProdutoComponent implements OnInit {
     }
 
     this.produtosService.refreshToken()
+
+    this.findAllProduto()
+  }
+
+  findAllProduto(){
+    this.produtosService.getAllProduto().subscribe((resp: Produtos[])=>{
+      this.listaProdutos = resp
+    })
   }
 
   cadastrarProduto(){
     this.produtosService.postProduto(this.produto).subscribe((resp: Produtos)=>{
       this.produto = resp
       alert("Produto cadastrado com sucesso")
+      this.findAllProduto()
       this.produto = new Produtos()
     })
   }

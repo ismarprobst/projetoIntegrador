@@ -8,5 +8,6 @@ export class Produtos{
     public marca : string
     public preco: number
     public categoria: Categoria
+    public fotoProduto: string
     public produtosVendidos: Venda[]
 }

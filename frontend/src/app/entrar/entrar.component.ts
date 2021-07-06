@@ -28,6 +28,9 @@ export class EntrarComponent implements OnInit {
       environment.nome = this.userLogin.nome
       environment.id = this.userLogin.id
 
+
+      
+
       if (environment.nome == "Enatu"){
         this.router.navigate(["/categorias"])
       }else {
