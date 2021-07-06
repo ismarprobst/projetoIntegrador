@@ -3,6 +3,14 @@
     color: white;
 }
 
+a {
+    cursor:pointer;
+}
+
+.mg-left {
+    margin-left: 170px;
+}
+
 .letra{
     font-family: 'Constantine', sans-serif;
     font-size:25px;

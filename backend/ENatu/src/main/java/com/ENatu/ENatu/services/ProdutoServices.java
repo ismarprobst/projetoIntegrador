@@ -108,6 +108,7 @@ public class ProdutoServices {
 			idProdutoExiste.get().setMarca(alterProduto.getMarca());
 			idProdutoExiste.get().setPreco(alterProduto.getPreco());
 			idProdutoExiste.get().setCategoria(alterProduto.getCategoria());
+			idProdutoExiste.get().setFotoProduto(alterProduto.getFotoProduto());
 			return ResponseEntity.status(202).body(repository.save(idProdutoExiste.get()));
 
 		} else {

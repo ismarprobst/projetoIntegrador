@@ -28,7 +28,15 @@ export class EntrarComponent implements OnInit {
       environment.nome = this.userLogin.nome
       environment.id = this.userLogin.id
 
-      this.router.navigate(["/home"])
+
+      
+
+      if (environment.nome == "Enatu"){
+        this.router.navigate(["/categorias"])
+      }else {
+        this.router.navigate(["/home"])
+      }
+      
     }, erro => {
       if (erro.status == 500) {
         alert("Usuário ou senha estão incorretos!")

@@ -1,9 +1,9 @@
 import { Produtos } from "./Produtos"
 
-export class categoria {
+export class Categoria {
     public idCategoria: number
     public nomeCategoria:string
     public autorizado: boolean
-    public descricaoCategoria: string
+    public descricao: string
     public produtosDaCategoria: Produtos
 }
