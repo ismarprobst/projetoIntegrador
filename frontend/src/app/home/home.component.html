@@ -1,4 +1,6 @@
-<app-menu></app-menu>
+<app-menu *ngIf='!auth.logado()'></app-menu>
+<app-menu2 *ngIf='auth.logado()'></app-menu2>
+
 
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
