@@ -147,8 +147,55 @@
     </div>
   </div>
 </div>
+<!--/Jumbotron/Desenvolvedores-->
 
+<!--Formulario-->
 
+<!--div class="container mb-4">
+
+  <form>
+    <div class="row">
+      <div class="col">
+        <input type="text" class="form-control"  id='nome' onkeyup="validaNome()" placeholder="Nome Completo">
+      </div>
+    </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1"></label>
+    <input type="email" class="form-control" id="email" onkeyup="validaEmail()" placeholder="nome@exemplo.com">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1" ></label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Deixe sua mensagem" rows="3" id="assunto" onkeyup="validaAssunto()"></textarea>
+    <div id='txtAssunto'></div>
+  </div>
+
+  <div class="form-group d-flex justify-content-end">
+    <button type="submit" class="btn btn-outline-success" onClick='enviar()' >Enviar</button>
+</div>
+
+  </form>
+</div>-->
+
+<input type="text" id="name" name="name" class="form-control"
+      required minlength="4" appForbiddenName="bob"
+      [(ngModel)]="hero.name" #name="ngModel">
+
+<div *ngIf="name.invalid && (name.dirty || name.touched)"
+    class="alert">
+
+  <div *ngIf="name.errors?.required">
+    Name is required.
+  </div>
+  <div *ngIf="name.errors?.minlength">
+    Name must be at least 4 characters long.
+  </div>
+  <div *ngIf="name.errors?.forbiddenName">
+    Name cannot be Bob.
+  </div>
+
+</div>
 
 
 
