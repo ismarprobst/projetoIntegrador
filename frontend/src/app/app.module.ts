@@ -13,6 +13,8 @@ import { RodapeComponent } from './rodape/rodape.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { HomeComponent } from './home/home.component';
+import { ContatoComponent } from './contato/contato.component';
+import { QuemsomosComponent } from './quemsomos/quemsomos.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { HomeComponent } from './home/home.component';
     RodapeComponent,
     CadastroComponent,
     EntrarComponent,
-    HomeComponent
+    HomeComponent,
+    ContatoComponent,
+    QuemsomosComponent
   ],
   imports: [
     BrowserModule,
