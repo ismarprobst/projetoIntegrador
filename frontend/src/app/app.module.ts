@@ -13,6 +13,10 @@ import { RodapeComponent } from './rodape/rodape.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { HomeComponent } from './home/home.component';
+import { Menu2Component } from './menu2/menu2.component';
+import { AdminProdutoComponent } from './admin-produto/admin-produto.component';
+import { CategoriasComponent } from './categorias/categorias.component';
+import { MenuAdminComponent } from './menu-admin/menu-admin.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { HomeComponent } from './home/home.component';
     RodapeComponent,
     CadastroComponent,
     EntrarComponent,
-    HomeComponent
+    HomeComponent,
+    Menu2Component,
+    AdminProdutoComponent,
+    CategoriasComponent,
+    MenuAdminComponent
   ],
   imports: [
     BrowserModule,
