@@ -28,6 +28,26 @@ public class Produtos {
 	private @NotNull(message = "Passar um valor aqui,não pode ser nulo.") String descricao;
 	private @NotNull(message = "Passar um valor aqui,não pode ser nulo.") String marca;
 	private @NotNull(message = "Passar um valor aqui,não pode ser nulo.") Double preco;
+	private String fotoProduto;
+	
+	
+	
+
+	public String getFotoProduto() {
+		return fotoProduto;
+	}
+
+	public void setFotoProduto(String fotoProduto) {
+		this.fotoProduto = fotoProduto;
+	}
+
+	public List<Venda> getProdutosVendidos() {
+		return produtosVendidos;
+	}
+
+	public void setProdutosVendidos(List<Venda> produtosVendidos) {
+		this.produtosVendidos = produtosVendidos;
+	}
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_categoria")
