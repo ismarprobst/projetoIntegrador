@@ -29,7 +29,7 @@ import { MenuAdminComponent } from './menu-admin/menu-admin.component';
     EntrarComponent,
     HomeComponent,
     ContatoComponent,
-    QuemsomosComponent
+    QuemsomosComponent,
     Menu2Component,
     AdminProdutoComponent,
     CategoriasComponent,
