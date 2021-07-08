@@ -19,6 +19,8 @@ import { Menu2Component } from './menu2/menu2.component';
 import { AdminProdutoComponent } from './admin-produto/admin-produto.component';
 import { CategoriasComponent } from './categorias/categorias.component';
 import { MenuAdminComponent } from './menu-admin/menu-admin.component';
+import { EditCategoriaComponent } from './edit/edit-categoria/edit-categoria.component';
+import { DeleteCategoriaComponent } from './delete/delete-categoria/delete-categoria.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { MenuAdminComponent } from './menu-admin/menu-admin.component';
     Menu2Component,
     AdminProdutoComponent,
     CategoriasComponent,
-    MenuAdminComponent
+    MenuAdminComponent,
+    EditCategoriaComponent,
+    DeleteCategoriaComponent
   ],
   imports: [
     BrowserModule,
