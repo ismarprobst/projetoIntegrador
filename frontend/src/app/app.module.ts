@@ -13,6 +13,14 @@ import { RodapeComponent } from './rodape/rodape.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { HomeComponent } from './home/home.component';
+import { ContatoComponent } from './contato/contato.component';
+import { QuemsomosComponent } from './quemsomos/quemsomos.component';
+import { Menu2Component } from './menu2/menu2.component';
+import { AdminProdutoComponent } from './admin-produto/admin-produto.component';
+import { CategoriasComponent } from './categorias/categorias.component';
+import { MenuAdminComponent } from './menu-admin/menu-admin.component';
+import { EditCategoriaComponent } from './edit/edit-categoria/edit-categoria.component';
+import { DeleteCategoriaComponent } from './delete/delete-categoria/delete-categoria.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +29,15 @@ import { HomeComponent } from './home/home.component';
     RodapeComponent,
     CadastroComponent,
     EntrarComponent,
-    HomeComponent
+    HomeComponent,
+    ContatoComponent,
+    QuemsomosComponent,
+    Menu2Component,
+    AdminProdutoComponent,
+    CategoriasComponent,
+    MenuAdminComponent,
+    EditCategoriaComponent,
+    DeleteCategoriaComponent
   ],
   imports: [
     BrowserModule,

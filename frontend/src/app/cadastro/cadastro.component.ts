@@ -25,6 +25,18 @@ export class CadastroComponent implements OnInit {
     this.confirmarSenha = event.target.value
   }
   cadastrar() {
+    if (this.usuario.nome.length < 3){
+      alert('Nome deve conter pelo menos 3 dígitos')
+    }
+
+    if (this.usuario.email.length < 5){
+      alert('E-mail deve conter 5 dígitos')
+    }
+    
+    if(this.usuario.senha.length < 6){
+      alert('Senha deve conter pelo menos 6 dígitos')
+    }
+    
     if (this.usuario.senha != this.confirmarSenha) {
       alert("As senhas estão inccorretas.")
     } else {

@@ -26,6 +26,16 @@ export class AuthService {
       ok = true
     }
 
-    return ok 
+    return ok
+  }
+
+  logadoAdmin(){
+    let ok: boolean = false
+
+    if (environment.nome == "Enatu"){
+      ok = true
+    }
+
+    return ok
   }
 }
