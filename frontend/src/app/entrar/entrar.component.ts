@@ -31,7 +31,7 @@ export class EntrarComponent implements OnInit {
 
       
 
-      if (environment.nome == "Enatu"){
+      if (environment.nome == "admin"){
         this.router.navigate(["/categorias"])
       }else {
         this.router.navigate(["/home"])

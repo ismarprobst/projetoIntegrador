@@ -28,8 +28,16 @@
                   <label for="preco">Preço:</label>
                   <input [(ngModel)]= 'produto.preco' class="form-control" type="number" min="0.00" max="10000.00" step="0.01"name="preco" id="preco"
                       placeholder="insira o preço">
-              
                   </div>
+
+                  <div class="form-group">
+                    <label for="texto">Escolha uma categoria: </label>
+                    <select name="categoria" id="categoria" class='form-control' [(ngModel)]='idCategoria' (change)='findByIdTema()'>
+                      <option value="">Categorias</option>
+                      <option *ngFor='let item of listaCategorias' value="{{item.idCategoria}}">{{item.nomeCategoria}}</option>
+                    </select> 
+                </div>
+
                   <div class="form-group pd-laterais">
                     <label for="foto">Link da foto:</label>
                     <input [(ngModel)]= 'produto.fotoProduto' class="form-control" type="text" name="foto" id="foto"
@@ -37,9 +45,9 @@
                 
                     </div>
               
-              <div class="d-flex justify-content-center mt-5 mb-5">
+              <div class="d-flex justify-content-center mt-5 mb-2">
                   <button type="submit" class="btn btn-danger mr-4 lb text-center" routerLink="/home">Cancelar</button>
-                  <button type="submit" class="btn btn-info lb " (click)='cadastrarProduto()'>Entrar</button>
+                  <button type="submit" class="btn btn-info lb " (click)='cadastrarProduto()'>Cadastrar</button>
 
               </div>
 
@@ -78,8 +86,8 @@
                   <td>{{i.nomeProduto}}</td>
 
                  <td class="d-flex justify-content-end">
-                    <button class="btn btn-info mr-3" >Editar</button> <!--[routerLink]="['/tema-edit', i.id]"-->
-                    <button class="btn btn-danger" >Apagar</button> <!--[routerLink]="['/tema-delete', i.id]"-->
+                    <button class="btn btn-info mr-3" [routerLink]="['/edit-produto', i.idProduto]" >Editar</button> 
+                    <button class="btn btn-danger" [routerLink]="['/delete-produto', i.idProduto]" >Apagar</button>
                   </td>
                   
                 </tr>
