@@ -8,6 +8,7 @@ import { EditCategoriaComponent } from './edit/edit-categoria/edit-categoria.com
 import { EntrarComponent } from './entrar/entrar.component';
 import { HomeComponent } from './home/home.component';
 import { QuemsomosComponent } from './quemsomos/quemsomos.component';
+import { UsuarioProdutoComponent } from './usuario-produto/usuario-produto.component';
 
 const routes: Routes = [
 
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: 'categorias', component: CategoriasComponent},
   {path:'quem-somos',component: QuemsomosComponent},
   {path:'edit-categoria/:id',component: EditCategoriaComponent},
-  {path:'delete-categoria/:id',component: DeleteCategoriaComponent}
+  {path:'delete-categoria/:id',component: DeleteCategoriaComponent},
+  {path: 'usuario-produto', component: UsuarioProdutoComponent}
 ];
 
 @NgModule({
