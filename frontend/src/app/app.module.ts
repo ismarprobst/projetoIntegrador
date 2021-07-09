@@ -23,6 +23,8 @@ import { EditCategoriaComponent } from './edit/edit-categoria/edit-categoria.com
 import { DeleteCategoriaComponent } from './delete/delete-categoria/delete-categoria.component';
 import { EditProdutoComponent } from './edit/edit-produto/edit-produto.component';
 import { DeleteProdutoComponent } from './delete/delete-produto/delete-produto.component';
+import { UsuarioProdutoComponent } from './usuario-produto/usuario-produto.component';
+
 
 @NgModule({
   declarations: [
@@ -40,8 +42,12 @@ import { DeleteProdutoComponent } from './delete/delete-produto/delete-produto.c
     MenuAdminComponent,
     EditCategoriaComponent,
     DeleteCategoriaComponent,
+
     EditProdutoComponent,
     DeleteProdutoComponent
+
+    UsuarioProdutoComponent
+
   ],
   imports: [
     BrowserModule,

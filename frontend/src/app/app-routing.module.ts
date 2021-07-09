@@ -10,6 +10,7 @@ import { EditProdutoComponent } from './edit/edit-produto/edit-produto.component
 import { EntrarComponent } from './entrar/entrar.component';
 import { HomeComponent } from './home/home.component';
 import { QuemsomosComponent } from './quemsomos/quemsomos.component';
+import { UsuarioProdutoComponent } from './usuario-produto/usuario-produto.component';
 
 const routes: Routes = [
 
@@ -27,6 +28,8 @@ const routes: Routes = [
   //Rotas para PUT e DELETE de produto
   {path:'edit-produto/:id',component: EditProdutoComponent},
   {path:'delete-produto/:id',component: DeleteProdutoComponent}
+
+  {path: 'usuario-produto', component: UsuarioProdutoComponent}
 ];
 
 @NgModule({
