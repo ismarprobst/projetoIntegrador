@@ -29,8 +29,8 @@ export class ProdutosService {
     return this.http.get<Produtos[]>('http://localhost:8080/produto/todos',this.token)
   }
 
-  getByIdProduto(id: number):Observable<Produtos>{
-    return this.http.get<Produtos>(`http://localhost:8080/produto/id/${id}`, this.token)
+  getByIdProduto(idProduto: number):Observable<Produtos>{
+    return this.http.get<Produtos>(`http://localhost:8080/produto/id/${idProduto}`, this.token)
   }
 
   getByNomeProduto(nomeProduto: string):Observable<Produtos[]>{
@@ -45,14 +45,14 @@ export class ProdutosService {
   }
 
   // Método PUT
-  putProduto(id: number, produto: Produtos):Observable<Produtos>{
-    return this.http.put<Produtos>(`http://localhost:8080/produto/atualizar/${id}`,produto,this.token)
+  putProduto(idProduto:number,produto:Produtos):Observable<Produtos>{
+    return this.http.put<Produtos>(`http://localhost:8080/produto/atualizar/${idProduto}`,produto,this.token)
   }
 
   // Método DELETE
-
-  deleteTema(id: number){
-    return this.http.delete(`http://localhost:8080/produto/deletar/${id}`,this.token)
+  
+  deleteProduto(idProduto:number){
+    return this.http.delete(`http://localhost:8080/produto/deletar/${idProduto}`,this.token)
   }
 
 

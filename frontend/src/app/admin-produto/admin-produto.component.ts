@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
+import { Categoria } from '../model/Categoria';
 import { Produtos } from '../model/Produtos';
 import { AuthService } from '../service/auth.service';
+import { CategoriaService } from '../service/categoria.service';
 import { ProdutosService } from '../service/produtos.service';
 
 @Component({
@@ -15,9 +17,14 @@ export class AdminProdutoComponent implements OnInit {
   produto: Produtos = new Produtos()
   listaProdutos: Produtos[]
 
+  idCategoria: number
+  listaCategorias: Categoria[]
+  categoria: Categoria = new Categoria()
+
   constructor(public auth: AuthService, 
     private router: Router, 
-    private produtosService: ProdutosService
+    private produtosService: ProdutosService,
+    private categoriaService: CategoriaService
     ) { }
 
   ngOnInit() {
@@ -29,6 +36,13 @@ export class AdminProdutoComponent implements OnInit {
     this.produtosService.refreshToken()
 
     this.findAllProduto()
+    this.getAllCategorias()
+  }
+
+  getAllCategorias(){
+    this.categoriaService.getAllCategoria().subscribe((resp: Categoria[])=>{
+      this.listaCategorias = resp
+    })
   }
 
   findAllProduto(){
@@ -36,6 +50,12 @@ export class AdminProdutoComponent implements OnInit {
       this.listaProdutos = resp
     })
   }
+  findByIdTema(){
+    this.categoriaService.getByIdCategoria(this.idCategoria).subscribe((resp: Categoria)=>{
+      this.categoria = resp
+    })
+  }
+
 
   cadastrarProduto(){
     this.produtosService.postProduto(this.produto).subscribe((resp: Produtos)=>{
