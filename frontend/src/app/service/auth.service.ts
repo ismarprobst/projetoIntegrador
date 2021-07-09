@@ -32,7 +32,7 @@ export class AuthService {
   logadoAdmin(){
     let ok: boolean = false
 
-    if (environment.nome == "Enatu"){
+    if (environment.nome == "admin"){
       ok = true
     }
 
