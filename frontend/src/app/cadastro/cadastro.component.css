@@ -1,8 +1,6 @@
 .img-bg {
-    background-image: url(../../assets/img/bg-cadastrar.jpg);
-    
+    background-image: url(../../assets/img/bg-cadastrar.jpg); 
     min-height: 995px;
-
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

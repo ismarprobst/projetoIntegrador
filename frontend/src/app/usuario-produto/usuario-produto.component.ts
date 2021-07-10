@@ -20,6 +20,7 @@ export class UsuarioProdutoComponent implements OnInit {
   categoria: Categoria = new Categoria()
   listaCategoria: Categoria[]
   idCategoria: number
+  
 
   constructor(public auth: AuthService, 
     private router: Router, 
@@ -50,6 +51,13 @@ export class UsuarioProdutoComponent implements OnInit {
   getAllCategoria(){
     this.categoriaService.getAllCategoria().subscribe((resp: Categoria[])=>{
       this.listaCategoria = resp
+    })
+  }
+
+  findByIdCategoria(filter:number){
+    this.idCategoria = filter
+    this.categoriaService.getByIdCategoria(this.idCategoria).subscribe((resp: Categoria)=>{
+      this.categoria = resp
     })
   }
 

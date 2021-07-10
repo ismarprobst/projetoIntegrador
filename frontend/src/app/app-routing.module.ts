@@ -27,9 +27,9 @@ const routes: Routes = [
   {path:'delete-categoria/:id',component: DeleteCategoriaComponent},
   //Rotas para PUT e DELETE de produto
   {path:'edit-produto/:id',component: EditProdutoComponent},
-  {path:'delete-produto/:id',component: DeleteProdutoComponent}
-
+  {path:'delete-produto/:id',component: DeleteProdutoComponent},
   {path: 'usuario-produto', component: UsuarioProdutoComponent}
+  
 ];
 
 @NgModule({

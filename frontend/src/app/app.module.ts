@@ -44,7 +44,7 @@ import { UsuarioProdutoComponent } from './usuario-produto/usuario-produto.compo
     DeleteCategoriaComponent,
 
     EditProdutoComponent,
-    DeleteProdutoComponent
+    DeleteProdutoComponent,
 
     UsuarioProdutoComponent
 

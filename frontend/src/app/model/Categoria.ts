@@ -5,5 +5,5 @@ export class Categoria {
     public nomeCategoria:string
     public autorizado: boolean
     public descricao: string
-    public produtosDaCategoria: Produtos
+    public produtosDaCategoria: Produtos[]
 }

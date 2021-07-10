@@ -50,9 +50,13 @@ export class AdminProdutoComponent implements OnInit {
       this.listaProdutos = resp
     })
   }
-  findByIdTema(){
+  findByIdCategoria(){
     this.categoriaService.getByIdCategoria(this.idCategoria).subscribe((resp: Categoria)=>{
       this.categoria = resp
+
+      this.produto.categoria = resp
+      
+    
     })
   }
 
