@@ -31,3 +31,11 @@ ul.social-network li{
     background-color: #2e5266;
     color: white;
 }
+
+
+.rodape-baixo{
+    position: absolute;
+    bottom: 0px;
+    width: 100%
+
+}
