@@ -1,4 +1,5 @@
-<app-menu></app-menu>
+<app-menu *ngIf='!auth.logado()'></app-menu> 
+<app-menu2 *ngIf='auth.logado()'></app-menu2>
 
 <div class="container mb-5 altura-menu " id="postagens">
 
@@ -27,7 +28,7 @@
                     <div class="card-body">
                         <img class="img-fluid" width="200px" height="200px" src={{item.fotoProduto}} alt="">
                         <h5 class="card-title">{{item.nomeProduto}}</h5>
-                        <button type="button" class="btn btn-primary btn-sm">Comprar</button>
+                        <button class="btn btn-info mr-3" [routerLink]="['/dados-compra', item.idProduto]" >Comprar</button>
                     </div>
                 </div>
             </div>
@@ -40,7 +41,10 @@
                     <div class="card-body">
                         <img class="img-fluid" width="200px" height="200px" src={{item.fotoProduto}} alt="">
                         <h5 class="card-title">{{item.nomeProduto}}</h5>
-                        <button type="button" class="btn btn-primary btn-sm">Comprar</button>
+                        <button class="btn btn-info mr-3" [routerLink]="['/dados-compra', item.idProduto]" >Comprar</button>
+
+                        
+                       
                     </div>
                 </div>
             </div>
@@ -56,7 +60,8 @@
                     <div class="card-body">
                         <img class="img-fluid" width="200px" height="200px" src={{item.fotoProduto}} alt="">
                         <h5 class="card-title">{{item.nomeProduto}}</h5>
-                        <button type="button" class="btn btn-primary btn-sm">Comprar</button>
+                        <button class="btn btn-info mr-3" [routerLink]="['/dados-compra', item.idProduto]" >Comprar</button>
+
                     </div>
                 </div>
             </div>
@@ -65,6 +70,7 @@
     </div>
 
 </div>
+
 
 
 
