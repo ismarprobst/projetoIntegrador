@@ -8,65 +8,56 @@ import { CategoriaService } from '../service/categoria.service';
 import { ProdutosService } from '../service/produtos.service';
 
 @Component({
-  selector: 'app-admin-produto',
-  templateUrl: './admin-produto.component.html',
-  styleUrls: ['./admin-produto.component.css']
+  selector: 'app-usuario-produto',
+  templateUrl: './usuario-produto.component.html',
+  styleUrls: ['./usuario-produto.component.css']
 })
-export class AdminProdutoComponent implements OnInit {
+export class UsuarioProdutoComponent implements OnInit {
 
   produto: Produtos = new Produtos()
   listaProdutos: Produtos[]
 
-  idCategoria: number
-  listaCategorias: Categoria[]
   categoria: Categoria = new Categoria()
+  listaCategoria: Categoria[]
+  idCategoria: number
+  
 
   constructor(public auth: AuthService, 
     private router: Router, 
     private produtosService: ProdutosService,
     private categoriaService: CategoriaService
-    ) { }
+
+  ) { }
 
   ngOnInit() {
     if (environment.token == ''){
       //alert('Sua sessão expirou, faça login novamente.')
-      this.router.navigate(['/entrar'])
+      this.router.navigate(['/usuario-produto'])
     }
+
+    this.getAllCategoria()
 
     this.produtosService.refreshToken()
 
-    this.findAllProduto()
-    this.getAllCategorias()
+    this.findAllProdutos()
   }
 
-  getAllCategorias(){
-    this.categoriaService.getAllCategoria().subscribe((resp: Categoria[])=>{
-      this.listaCategorias = resp
-    })
-  }
-
-  findAllProduto(){
+  findAllProdutos(){
     this.produtosService.getAllProduto().subscribe((resp: Produtos[])=>{
       this.listaProdutos = resp
     })
   }
-  findByIdCategoria(){
-    this.categoriaService.getByIdCategoria(this.idCategoria).subscribe((resp: Categoria)=>{
-      this.categoria = resp
 
-      this.produto.categoria = resp
-      
-    
+  getAllCategoria(){
+    this.categoriaService.getAllCategoria().subscribe((resp: Categoria[])=>{
+      this.listaCategoria = resp
     })
   }
 
-
-  cadastrarProduto(){
-    this.produtosService.postProduto(this.produto).subscribe((resp: Produtos)=>{
-      this.produto = resp
-      alert("Produto cadastrado com sucesso")
-      this.findAllProduto()
-      this.produto = new Produtos()
+  findByIdCategoria(filter:number){
+    this.idCategoria = filter
+    this.categoriaService.getByIdCategoria(this.idCategoria).subscribe((resp: Categoria)=>{
+      this.categoria = resp
     })
   }
 

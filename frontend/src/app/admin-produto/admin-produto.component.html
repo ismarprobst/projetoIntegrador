@@ -2,50 +2,59 @@
 <div class="container-fluid bg">
 
   <div class="row d-flex justify-content-center align-self-center text-white">
-      <div class="col-md-4"></div>
-      <div class="col-md-4 bg-box mt-5 mb-5 pb-5">
-          <h1 class="text-center mb-3 mt-3 pd-entrar">Adicionar Produto</h1>
+    <div class="col-md-4"></div>
+    <div class="col-md-4 bg-box mt-5 mb-5 pb-5">
+      <h1 class="text-center mb-3 mt-3 pd-entrar">Adicionar Produto</h1>
 
-          <div class="form-group pd-laterais">
-              <label for="nomeProduto">Nome do produto:</label>
-              <input [(ngModel)]= 'produto.nomeProduto' class="form-control" type="text" name="nomeProduto" id="nomeProduto"
-                  placeholder="Insira o nome do produto">
-          </div>
-          <div class="form-group pd-laterais">
-              <label for="descricaoProduto">Descrição do produto:</label>
-              <input [(ngModel)]= 'produto.descricao' class="form-control" type="text" name="descricaoProduto" id="descricaoProduto"
-                  placeholder="Insira aqui a descrição">
-          
-          </div>
-
-              <div class="form-group pd-laterais">
-                <label for="marca">Marca:</label>
-                <input [(ngModel)]= 'produto.marca' class="form-control" type="text" name="marca" id="marca"
-                    placeholder="Insira a marca do produto">
-            
-                </div>
-                <div class="form-group pd-laterais">
-                  <label for="preco">Preço:</label>
-                  <input [(ngModel)]= 'produto.preco' class="form-control" type="number" min="0.00" max="10000.00" step="0.01"name="preco" id="preco"
-                      placeholder="insira o preço">
-              
-                  </div>
-                  <div class="form-group pd-laterais">
-                    <label for="foto">Link da foto:</label>
-                    <input [(ngModel)]= 'produto.fotoProduto' class="form-control" type="text" name="foto" id="foto"
-                        placeholder="Insira o link da foto">
-                
-                    </div>
-              
-              <div class="d-flex justify-content-center mt-5 mb-5">
-                  <button type="submit" class="btn btn-danger mr-4 lb text-center" routerLink="/home">Cancelar</button>
-                  <button type="submit" class="btn btn-info lb " (click)='cadastrarProduto()'>Entrar</button>
-
-              </div>
-
+      <div class="form-group pd-laterais">
+        <label for="nomeProduto">Nome do produto:</label>
+        <input [(ngModel)]='produto.nomeProduto' class="form-control" type="text" name="nomeProduto" id="nomeProduto"
+          placeholder="Insira o nome do produto">
+      </div>
+      <div class="form-group pd-laterais">
+        <label for="descricaoProduto">Descrição do produto:</label>
+        <input [(ngModel)]='produto.descricao' class="form-control" type="text" name="descricaoProduto"
+          id="descricaoProduto" placeholder="Insira aqui a descrição">
 
       </div>
-      <div class="col-md-4"></div>
+
+      <div class="form-group pd-laterais">
+        <label for="marca">Marca:</label>
+        <input [(ngModel)]='produto.marca' class="form-control" type="text" name="marca" id="marca"
+          placeholder="Insira a marca do produto">
+
+      </div>
+      <div class="form-group pd-laterais">
+        <label for="preco">Preço:</label>
+        <input [(ngModel)]='produto.preco' class="form-control" type="number" min="0.00" max="10000.00" step="0.01"
+          name="preco" id="preco" placeholder="insira o preço">
+      </div>
+
+      <div class="form-group">
+        <label for="texto">Escolha uma categoria: </label>
+        <select name="categoria" id="categoria" class='form-control' [(ngModel)]='idCategoria'
+          (change)='findByIdCategoria()'>
+          <option value="">Categorias</option>
+          <option *ngFor='let item of listaCategorias' value="{{item.idCategoria}}">{{item.nomeCategoria}}</option>
+        </select>
+      </div>
+
+      <div class="form-group pd-laterais">
+        <label for="foto">Link da foto:</label>
+        <input [(ngModel)]='produto.fotoProduto' class="form-control" type="text" name="foto" id="foto"
+          placeholder="Insira o link da foto">
+
+      </div>
+
+      <div class="d-flex justify-content-center mt-5 mb-2">
+        <button type="submit" class="btn btn-danger mr-4 lb text-center" routerLink="/edit-categoria">Cancelar</button>
+        <button type="submit" class="btn btn-info lb " (click)='cadastrarProduto()'>Cadastrar</button>
+      </div>
+
+
+
+    </div>
+    <div class="col-md-4"></div>
 
   </div>
 
@@ -54,42 +63,40 @@
 
 <div class="container">
   <div class="row mt-5">
-      <div class="col-md-12">
-          <h2 class='text-center'>Todas os Produtos</h2>
-      </div>
+    <div class="col-md-12">
+      <h2 class='text-center'>Todas os Produtos</h2>
+    </div>
 
   </div>
 
   <div class="row mt-3 mb-5 d-flex justify-content-center">
-      <div class="col-md-6">
-          <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Nome</th>
+    <div class="col-md-6">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
 
-                  <th scope="col" class="text-right">Modificações</th>
-                  
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor='let i of listaProdutos'>
-                  <th>{{i.idProduto}}</th>
-                  <td>{{i.nomeProduto}}</td>
+            <th scope="col" class="text-right">Modificações</th>
 
-                 <td class="d-flex justify-content-end">
-                    <button class="btn btn-info mr-3" >Editar</button> <!--[routerLink]="['/tema-edit', i.id]"-->
-                    <button class="btn btn-danger" >Apagar</button> <!--[routerLink]="['/tema-delete', i.id]"-->
-                  </td>
-                  
-                </tr>
-                
-              </tbody>
-            </table>
-      </div>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let i of listaProdutos'>
+            <th>{{i.idProduto}}</th>
+            <td>{{i.nomeProduto}}</td>
+
+            <td class="d-flex justify-content-end">
+              <button class="btn btn-info mr-3" [routerLink]="['/edit-produto', i.idProduto]">Editar</button>
+              <button class="btn btn-danger" [routerLink]="['/delete-produto', i.idProduto]">Apagar</button>
+            </td>
+
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
 
   </div>
 </div>
 <app-rodape></app-rodape>
-
-

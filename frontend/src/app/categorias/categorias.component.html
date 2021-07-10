@@ -45,7 +45,6 @@
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Descrição</th>
 
                     <th scope="col" class="text-right">Modificações</th>
                     
@@ -55,7 +54,6 @@
                   <tr *ngFor='let i of listaCategoria'>
                     <th>{{i.idCategoria}}</th>
                     <td>{{i.nomeCategoria}}</td>
-                    <td>{{i.descricao}}</td>
 
                    <td class="d-flex justify-content-end">
                       <button class="btn btn-info mr-3" [routerLink]="['/edit-categoria', i.idCategoria]" >Editar</button>

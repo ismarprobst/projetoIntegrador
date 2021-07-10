@@ -1,0 +1,74 @@
+<app-menu></app-menu>
+
+<div class="container mb-5 altura-menu " id="postagens">
+
+    <nav>
+        <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
+
+            <a class="nav-item nav-link active text-dark font-weight-bold" id="nav-todos-tab" data-toggle="tab"
+                href="#todos" role="tab" aria-controls="nav-home todos" aria-selected="true">Todos </a>
+
+            <a (click)="findByIdCategoria(1)" class="nav-item nav-link text-dark font-weight-bold"
+                id="nav-medicamentos-tab" data-toggle="tab" href="#medicamentos" role="tab"
+                aria-controls="nav-medicamentos" aria-selected="false">Medicamentos</a>
+
+            <a (click)="findByIdCategoria(2)" class="nav-item nav-link text-dark font-weight-bold"
+                id="nav-sustentaveis-tab" data-toggle="tab" href="#sustentaveis" role="tab"
+                aria-controls="nav-sustentaveis" aria-selected="false">Sustentáveis</a>
+
+        </div>
+    </nav>
+    
+    <div class="tab-content mt-5" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="todos" role="tabpanel" aria-labelledby="nav-todos-tab">
+
+            <div class="card-columns align-content-start justify-content-center d-inline-block-sm">
+                <div class="card text-center bg-box mr-3" *ngFor='let item of listaProdutos'>
+                    <div class="card-body">
+                        <img class="img-fluid" width="200px" height="200px" src={{item.fotoProduto}} alt="">
+                        <h5 class="card-title">{{item.nomeProduto}}</h5>
+                        <button type="button" class="btn btn-primary btn-sm">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="tab-pane fade" id="medicamentos" role="tabpanel" aria-labelledby="nav-medicamentos-tab">
+            <div class="card-columns align-content-start justify-content-center d-inline-block-sm">
+                <div class="card text-center bg-box mr-3" *ngFor='let item of categoria.produtosDaCategoria'>
+                    <div class="card-body">
+                        <img class="img-fluid" width="200px" height="200px" src={{item.fotoProduto}} alt="">
+                        <h5 class="card-title">{{item.nomeProduto}}</h5>
+                        <button type="button" class="btn btn-primary btn-sm">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+
+
+
+        <div class="tab-pane fade" id="sustentaveis" role="tabpanel" aria-labelledby="nav-sustentaveis-tab">
+            <div class="card-columns align-content-start justify-content-center d-inline-block-sm">
+                <div class="card text-center bg-box mr-3" *ngFor='let item of categoria.produtosDaCategoria'>
+                    <div class="card-body">
+                        <img class="img-fluid" width="200px" height="200px" src={{item.fotoProduto}} alt="">
+                        <h5 class="card-title">{{item.nomeProduto}}</h5>
+                        <button type="button" class="btn btn-primary btn-sm">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+<app-rodape></app-rodape>
