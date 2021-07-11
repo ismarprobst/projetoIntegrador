@@ -24,14 +24,15 @@ const routes: Routes = [
   {path: 'categorias', component: CategoriasComponent},
   {path:'quem-somos',component: QuemsomosComponent},
   {path:'dados-compra/:id',component: DadosCompraComponent},
+  {path: 'usuario-produto', component: UsuarioProdutoComponent},
   
 
   {path:'edit-categoria/:id',component: EditCategoriaComponent},
   {path:'delete-categoria/:id',component: DeleteCategoriaComponent},
   //Rotas para PUT e DELETE de produto
   {path:'edit-produto/:id',component: EditProdutoComponent},
-  {path:'delete-produto/:id',component: DeleteProdutoComponent},
-  {path: 'usuario-produto', component: UsuarioProdutoComponent}
+  {path:'delete-produto/:id',component: DeleteProdutoComponent}
+  
   
 ];
 

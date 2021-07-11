@@ -22,7 +22,8 @@ export class UsuarioProdutoComponent implements OnInit {
   idCategoria: number
   
 
-  constructor(public auth: AuthService, 
+  constructor(
+    public auth: AuthService, 
     private router: Router, 
     private produtosService: ProdutosService,
     private categoriaService: CategoriaService
