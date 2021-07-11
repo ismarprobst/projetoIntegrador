@@ -7,23 +7,23 @@
                     <h1 class="text-center pd-cadastro">Cadastro</h1>
 
                     <div class="form-group">
-                        <label for="nome">Nome</label>
+                        <label for="nome">Nome*</label>
                         <input [(ngModel)]="usuario.nome" class="form-control" type="text" name="nome" id="nome"
                             placeholder="Seu nome">
                     </div>
                     <div class="form-group">
-                        <label for="usuario">Email</label>
+                        <label for="usuario">Email*</label>
                         <input [(ngModel)]="usuario.email" class="form-control" type="text" name="usuario" id="usuario"
                             placeholder="Digite seu e-mail">
                     </div>
 
                     <div class="form-group">
-                        <label for="senha">Senha</label>
+                        <label for="senha">Senha*</label>
                         <input (input)="confirmSenha($event)" class="form-control" type="password" name="senha"
                             id="senha" placeholder="Sua Senha">
                     </div>
                     <div class="form-group">
-                        <label for="confirmSenha">Confirmar Senha</label>
+                        <label for="confirmSenha">Confirmar Senha*</label>
                         <input [(ngModel)]='usuario.senha' class="form-control" type="password" name="confirmSenha"
                             id="confirmSenha" placeholder="Confirme sua Senha">
                     </div>
