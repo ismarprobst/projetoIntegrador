@@ -1,13 +1,6 @@
 <app-menu *ngIf='!auth.logado()'></app-menu>
 <app-menu2 *ngIf='auth.logado()'></app-menu2>
-<div class="container">
-    <div class="pt-5 row d-flex justify-content-center align-items-center">
 
-        <div class="col-md-4">
-            <a type="button" routerLink="/usuario-produto"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></a>
-        </div>
-    </div>
-</div>
 
 
 
@@ -62,6 +55,7 @@
                     <hr>
 
                     <div class="row-md-1">
+                        
                         <button class="btn btn-danger w-100" data-toggle="modal"
                             data-target="#pagamento">Comprar</button>
 
@@ -135,8 +129,27 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" (click)="finalizarVenda()" data-dismiss="modal">Finalizar
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="doador">Doador de sangue?</label>
+                    </div>
+                    <select [(ngModel)]="validaDoador" class="custom-select" id="doador"
+                            (change)="validarDoador(validaDoador)">
+                            <option value="" disabled selected>Selecione</option>
+                            <option value="sim">Sim</option>
+                            <option value="nao">Não</option>
+                        </select>
+                </div>
+                
+                   
+                <div>
+                    <button type="button" class="btn btn-success mr-4" (click)="finalizarDoacao()" data-dismiss="modal">Doe para uma ONG</button>
+                    <button type="button" class="btn btn-success" (click)="finalizarVenda()" data-dismiss="modal">Finalizar
                     compra</button>
+                </div>
+                
+                
             </div>
 
         </div>

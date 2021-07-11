@@ -1,7 +1,7 @@
 
 .fa:hover{
     
-    font-size: 30pt;
+    font-size: 15pt;
     
 }
 
@@ -15,8 +15,8 @@ ul.social-network li{
     padding: 5px;
 }
 .fa{
-    font-size: 35pt;
-    color: white;
+    font-size: 20pt;
+    color: #2e5266;
     padding: 10px;
 }
 .fa-facebook-square:hover{
