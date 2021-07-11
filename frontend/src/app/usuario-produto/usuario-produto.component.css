@@ -3,7 +3,7 @@
 }
 
 .bg-box {
-    width: 100%;
+    width: 67%;
     height: 300px;
     
    
@@ -11,5 +11,23 @@
 
 .altura-menu{
     margin-top: 100pt;
+}
+
+.texto {
+  font-family: Arial;
+  text-align: center;
+  color: white;
+  opacity: 0;
+  transition: opacity .2s linear;
+  background-color: rgba(0, 0, 0, .7);
+}
+
+.imagem:hover .texto {
+  opacity: 1;
+}
+
+.btn-cor {
+    background-color: #2E5266;
+    color:aliceblue;
 }
 
