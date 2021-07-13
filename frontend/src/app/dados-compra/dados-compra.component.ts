@@ -4,7 +4,6 @@ import { environment } from 'src/environments/environment.prod';
 import { Produtos } from '../model/Produtos';
 import { AuthService } from '../service/auth.service';
 import { ProdutosService } from '../service/produtos.service';
-import { VendaService } from '../service/venda.service';
 
 @Component({
   selector: 'app-dados-compra',
@@ -21,12 +20,12 @@ export class DadosCompraComponent implements OnInit {
 
   doador: string
 
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private produtosService: ProdutosService,
-    public auth:AuthService,
-    private vendaService: VendaService
+    public auth:AuthService
   
 
   ) { }
@@ -63,8 +62,6 @@ export class DadosCompraComponent implements OnInit {
       this.quantidade -= 1
     }
   }
-
-
 
   validarPagamento(pagamento: string){
     console.log(pagamento)
@@ -107,10 +104,13 @@ export class DadosCompraComponent implements OnInit {
         this.desconto()
         alert("Voce ganhou um desconto de 10%! O valor final ficará R$" + (this.produto.preco).toFixed(2))
         alert("Em breve você reberá o boleto no seu um email!")
+
         this.router.navigate(['/home'])
       } else if(this.validaDoador == "nao"){
         alert("Que pena! Se fosse doador receberia um desconto de 10%")
         alert("Em breve você reberá o boleto no seu um email!")
+
+
         this.router.navigate(['/home'])
       } else {
         alert("Favor, escolha uma opção")
@@ -150,6 +150,7 @@ export class DadosCompraComponent implements OnInit {
       } else if(this.validaDoador == "nao"){
         alert("Que pena! Se fosse doador receberia um desconto de 10%")
         alert("Obrigado pela doação! Em breve você reberá o boleto no seu um email!")
+
         this.router.navigate(['/home'])
       } else {
         alert("Favor, escolha uma opção")

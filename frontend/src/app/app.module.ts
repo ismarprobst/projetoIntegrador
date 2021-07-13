@@ -48,7 +48,7 @@ import { DadosCompraComponent } from './dados-compra/dados-compra.component';
     DeleteProdutoComponent,
 
     UsuarioProdutoComponent,
-      DadosCompraComponent
+    DadosCompraComponent
 
   ],
   imports: [
