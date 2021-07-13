@@ -1,6 +1,7 @@
  import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-quemsomos',
@@ -9,7 +10,9 @@ import { NgForm } from '@angular/forms';
 })
 export class QuemsomosComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public auth: AuthService
+  ) { }
 
   ngOnInit(): void {
   }
