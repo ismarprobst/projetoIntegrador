@@ -33,6 +33,11 @@ export class AdminProdutoComponent implements OnInit {
       this.router.navigate(['/entrar'])
     }
 
+    if (environment.nome != "admin"){
+      alert("Você precisa ser administrador para acesar essa rota")
+      this.router.navigate(['/home'])
+    }
+
     this.produtosService.refreshToken()
 
     this.findAllProduto()

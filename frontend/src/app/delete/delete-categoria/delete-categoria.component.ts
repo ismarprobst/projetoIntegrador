@@ -23,6 +23,12 @@ export class DeleteCategoriaComponent implements OnInit {
     if(environment.token ==''){
       this.router.navigate(['/entrar'])
     }
+
+    if (environment.nome != "admin"){
+      alert("Você precisa ser administrador para acesar essa rota")
+      this.router.navigate(['/home'])
+    }
+    
     this.idCategoria = this.route. snapshot.params['id']
     this.findByIdCategoria(this.idCategoria)
   }
