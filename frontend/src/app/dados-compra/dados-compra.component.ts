@@ -110,7 +110,7 @@ export class DadosCompraComponent implements OnInit {
         this.router.navigate(['/home'])
       } else if(this.validaDoador == "nao"){
         alert("Que pena! Se fosse doador receberia um desconto de 10%")
-        alert("Em breve você reberá o boleto no seu um email!")
+        alert("Em breve você reberá o boleto no seu email!")
         this.router.navigate(['/home'])
       } else {
         alert("Favor, escolha uma opção")
