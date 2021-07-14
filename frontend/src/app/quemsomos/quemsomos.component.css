@@ -62,7 +62,7 @@ font-size: 30px;
 }
 
 .flip-card-back {
-  background-color: #676e72;
+  background-color: #349890;
   color: white;
   transform: rotateY(180deg);
 }
@@ -93,8 +93,26 @@ font-size: 30px;
 
 }
 
-/*filter-card{
-background-color:transparent;
-filter: blur(5px);
-background: hsla(0,0%,100%,.35);
-}*/
+.fs-15{
+  font-size: 15pt;
+}
+
+
+.texto {
+  font-family: Arial;
+  text-align: center;
+  color: white;
+  opacity: 0;
+  transition: opacity .2s linear;
+  background-color: rgba(0, 0, 0, .7);
+}
+
+.imagem:hover .texto {
+  opacity: 1;
+}
+
+.jumbcolor{
+  background-color: #e9edeb;
+}
+
+

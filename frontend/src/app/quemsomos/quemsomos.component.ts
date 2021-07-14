@@ -14,6 +14,7 @@ export class QuemsomosComponent implements OnInit {
     public auth: AuthService
   ) { }
 
+
   ngOnInit(): void {
   }
   validacaoNome(){
@@ -41,23 +42,6 @@ export class QuemsomosComponent implements OnInit {
       alert('Tente novamente!')
     }
   }
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
