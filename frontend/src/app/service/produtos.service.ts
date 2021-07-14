@@ -26,33 +26,33 @@ export class ProdutosService {
 
   // Métodos GET
   getAllProduto():Observable<Produtos[]>{
-    return this.http.get<Produtos[]>('http://localhost:8080/produto/todos',this.token)
+    return this.http.get<Produtos[]>('https://enatu-backend.herokuapp.com/produto/todos',this.token)
   }
 
   getByIdProduto(idProduto: number):Observable<Produtos>{
-    return this.http.get<Produtos>(`http://localhost:8080/produto/id/${idProduto}`, this.token)
+    return this.http.get<Produtos>(`https://enatu-backend.herokuapp.com/produto/id/${idProduto}`, this.token)
   }
 
   getByNomeProduto(nomeProduto: string):Observable<Produtos[]>{
     let params = new HttpParams().set('nomeProduto',nomeProduto)
-    return this.http.get<Produtos[]>(`http://localhost:8080/produto/nome?${params}`,this.token)
+    return this.http.get<Produtos[]>(`https://enatu-backend.herokuapp.com/produto/nome?${params}`,this.token)
   }
 
 
   // Método POST
   postProduto(produto: Produtos):Observable<Produtos>{
-    return this.http.post<Produtos>('http://localhost:8080/produto/salvar',produto,this.token)
+    return this.http.post<Produtos>('https://enatu-backend.herokuapp.com/produto/salvar',produto,this.token)
   }
 
   // Método PUT
   putProduto(idProduto:number,produto:Produtos):Observable<Produtos>{
-    return this.http.put<Produtos>(`http://localhost:8080/produto/atualizar/${idProduto}`,produto,this.token)
+    return this.http.put<Produtos>(`https://enatu-backend.herokuapp.com/produto/atualizar/${idProduto}`,produto,this.token)
   }
 
   // Método DELETE
   
   deleteProduto(idProduto:number){
-    return this.http.delete(`http://localhost:8080/produto/deletar/${idProduto}`,this.token)
+    return this.http.delete(`https://enatu-backend.herokuapp.com/produto/deletar/${idProduto}`,this.token)
   }
 
 
