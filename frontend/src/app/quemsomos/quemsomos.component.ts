@@ -9,7 +9,9 @@ import { NgForm } from '@angular/forms';
 })
 export class QuemsomosComponent implements OnInit {
 
-  constructor() { }
+  minhaDiv: Boolean = false;
+  constructor() {}
+
 
   ngOnInit(): void {
   }
@@ -38,23 +40,16 @@ export class QuemsomosComponent implements OnInit {
       alert('Tente novamente!')
     }
   }
+
+ /* seta1(){
+    console.log('entrei')
+  }
+  seta2(){
+    console.log('sair')
+  }
+*/
+seta1(){
+  this.minhaDiv = !this.minhaDiv
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
