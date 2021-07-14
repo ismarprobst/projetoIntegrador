@@ -15,31 +15,31 @@ export class CategoriaService {
   ) { }
 
   token = {
-    headers: new HttpHeaders().set('Authorization',environment.token)
+    headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
-  refreshToken(){
+  refreshToken() {
     this.token = {
-      headers: new HttpHeaders().set('Authorization',environment.token)
+      headers: new HttpHeaders().set('Authorization', environment.token)
     }
   }
 
-  getAllCategoria():Observable<Categoria[]>{
-    return this.http.get<Categoria[]>('https://enatu-backend.herokuapp.com/categoria/todas',this.token)
+  getAllCategoria(): Observable<Categoria[]> {
+    return this.http.get<Categoria[]>('https://enatu-backend.herokuapp.com/categoria/todas', this.token)
   }
   // Método POST
-  postCategoria(categoria: Categoria):Observable<Categoria>{
-    return this.http.post<Categoria>('https://enatu-backend.herokuapp.com/categoria/salvar',categoria,this.token)
+  postCategoria(categoria: Categoria): Observable<Categoria> {
+    return this.http.post<Categoria>('https://enatu-backend.herokuapp.com/categoria/salvar', categoria, this.token)
   }
-  putCategoria(idCategoria:number,categoria:Categoria):Observable<Categoria>{
-    return this.http.put<Categoria>(`https://enatu-backend.herokuapp.com/categoria/atualizar/${idCategoria}`,categoria,this.token)
+  putCategoria(idCategoria: number, categoria: Categoria): Observable<Categoria> {
+    return this.http.put<Categoria>(`https://enatu-backend.herokuapp.com/categoria/atualizar/${idCategoria}`, categoria, this.token)
   }
-  getByIdCategoria(idCategoria:number):Observable<Categoria>{
-    return this.http.get<Categoria>(`https://enatu-backend.herokuapp.com/categoria/id/${idCategoria}`,this.token)
+  getByIdCategoria(idCategoria: number): Observable<Categoria> {
+    return this.http.get<Categoria>(`https://enatu-backend.herokuapp.com/categoria/id/${idCategoria}`, this.token)
 
   }
 
-  deleteCategoria(idCategoria:number){
-    return this.http.delete(`https://enatu-backend.herokuapp.com/categoria/deletar/${idCategoria}`,this.token)
+  deleteCategoria(idCategoria: number) {
+    return this.http.delete(`https://enatu-backend.herokuapp.com/categoria/deletar/${idCategoria}`, this.token)
   }
 }

@@ -17,19 +17,19 @@ export class CategoriasComponent implements OnInit {
   categoria: Categoria = new Categoria()
   listaCategoria: Categoria[]
 
-  constructor(public auth: AuthService, 
-    private router: Router, 
+  constructor(public auth: AuthService,
+    private router: Router,
     private categoriaService: CategoriaService,
     private alertas: AlertasService
-    ) { }
+  ) { }
 
   ngOnInit() {
-    if (environment.token == ''){
+    if (environment.token == '') {
       //alert('Sua sessão expirou, faça login novamente.')
       this.router.navigate(['/entrar'])
     }
 
-    if (environment.nome != "admin"){
+    if (environment.nome != "admin") {
       this.alertas.showAlertDanger("Você precisa ser administrador para acesar essa rota")
       this.router.navigate(['/home'])
     }
@@ -38,24 +38,22 @@ export class CategoriasComponent implements OnInit {
 
     this.findAllCategorias()
 
-    
+
   }
 
-  findAllCategorias(){
-    this.categoriaService.getAllCategoria().subscribe((resp: Categoria[])=>{
+  findAllCategorias() {
+    this.categoriaService.getAllCategoria().subscribe((resp: Categoria[]) => {
       this.listaCategoria = resp
     })
   }
 
-  cadastrarCategoria(){
-    this.categoriaService.postCategoria(this.categoria).subscribe((resp: Categoria)=>{
+  cadastrarCategoria() {
+    this.categoriaService.postCategoria(this.categoria).subscribe((resp: Categoria) => {
       this.categoria = resp
       this.alertas.showAlertSuccess("Categoria cadastrada com sucesso")
       this.findAllCategorias()
       this.categoria = new Categoria()
     })
 
-
-
-}
+  }
 }

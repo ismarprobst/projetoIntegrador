@@ -15,40 +15,40 @@ export class AuthService {
   ) { }
 
   token = {
-    headers: new HttpHeaders().set('Authorization',environment.token)
+    headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
-  refreshToken(){
+  refreshToken() {
     this.token = {
-      headers: new HttpHeaders().set('Authorization',environment.token)
+      headers: new HttpHeaders().set('Authorization', environment.token)
     }
   }
 
-  entrar(userLogin: UserLogin): Observable<UserLogin>{
-    return this.http.post<UserLogin>('https://enatu-backend.herokuapp.com/usuario/logar',userLogin)
+  entrar(userLogin: UserLogin): Observable<UserLogin> {
+    return this.http.post<UserLogin>('https://enatu-backend.herokuapp.com/usuario/logar', userLogin)
   }
-  cadastrar(usuario:Usuario):Observable<Usuario>{
-    return this.http.post<Usuario>('https://enatu-backend.herokuapp.com/usuario/cadastrar',usuario)
-  }
-
-  getByIdUser(id:number):Observable<Usuario>{
-    return this.http.get<Usuario>(`https://enatu-backend.herokuapp.com/usuario/id/${id}`,this.token)
+  cadastrar(usuario: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>('https://enatu-backend.herokuapp.com/usuario/cadastrar', usuario)
   }
 
-  logado(){
+  getByIdUser(id: number): Observable<Usuario> {
+    return this.http.get<Usuario>(`https://enatu-backend.herokuapp.com/usuario/id/${id}`, this.token)
+  }
+
+  logado() {
     let ok: boolean = false
 
-    if (environment.token != ""){
+    if (environment.token != "") {
       ok = true
     }
 
     return ok
   }
 
-  logadoAdmin(){
+  logadoAdmin() {
     let ok: boolean = false
 
-    if (environment.nome == "admin"){
+    if (environment.nome == "admin") {
       ok = true
     }
 

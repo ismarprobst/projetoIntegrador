@@ -12,14 +12,14 @@ export class MenuAdminComponent implements OnInit {
 
 
   nome = environment.nome
-  
+
   constructor(private router: Router,
     public auth: AuthService) { }
 
   ngOnInit() {
   }
 
-  sair(){
+  sair() {
     this.router.navigate(['/entrar'])
     environment.token = ''
     environment.nome = ''

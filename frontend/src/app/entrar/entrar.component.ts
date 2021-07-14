@@ -12,7 +12,7 @@ import { AuthService } from '../service/auth.service';
 })
 export class EntrarComponent implements OnInit {
   userLogin: UserLogin = new UserLogin()
-  
+
   constructor(
     private auth: AuthService,
     private router: Router,
@@ -20,7 +20,7 @@ export class EntrarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    window.scroll(0,0)
+    window.scroll(0, 0)
   }
   entrar() {
     this.auth.entrar(this.userLogin).subscribe((resp: UserLogin) => {
@@ -31,14 +31,14 @@ export class EntrarComponent implements OnInit {
       environment.id = this.userLogin.id
 
 
-      
 
-      if (environment.nome == "admin"){
+
+      if (environment.nome == "admin") {
         this.router.navigate(["/categorias"])
-      }else {
+      } else {
         this.router.navigate(["/home"])
       }
-      
+
     }, erro => {
       if (erro.status == 401 || erro.status == 500) {
         this.alertas.showAlertDanger("Usuário ou senha estão incorretos!")

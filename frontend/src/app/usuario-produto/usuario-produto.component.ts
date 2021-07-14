@@ -20,18 +20,18 @@ export class UsuarioProdutoComponent implements OnInit {
   categoria: Categoria = new Categoria()
   listaCategoria: Categoria[]
   idCategoria: number
-  
+
 
   constructor(
-    public auth: AuthService, 
-    private router: Router, 
+    public auth: AuthService,
+    private router: Router,
     private produtosService: ProdutosService,
     private categoriaService: CategoriaService
 
   ) { }
 
   ngOnInit() {
-    if (environment.token == ''){
+    if (environment.token == '') {
       //alert('Sua sessão expirou, faça login novamente.')
       this.router.navigate(['/usuario-produto'])
     }
@@ -43,21 +43,21 @@ export class UsuarioProdutoComponent implements OnInit {
     this.findAllProdutos()
   }
 
-  findAllProdutos(){
-    this.produtosService.getAllProduto().subscribe((resp: Produtos[])=>{
+  findAllProdutos() {
+    this.produtosService.getAllProduto().subscribe((resp: Produtos[]) => {
       this.listaProdutos = resp
     })
   }
 
-  getAllCategoria(){
-    this.categoriaService.getAllCategoria().subscribe((resp: Categoria[])=>{
+  getAllCategoria() {
+    this.categoriaService.getAllCategoria().subscribe((resp: Categoria[]) => {
       this.listaCategoria = resp
     })
   }
 
-  findByIdCategoria(filter:number){
+  findByIdCategoria(filter: number) {
     this.idCategoria = filter
-    this.categoriaService.getByIdCategoria(this.idCategoria).subscribe((resp: Categoria)=>{
+    this.categoriaService.getByIdCategoria(this.idCategoria).subscribe((resp: Categoria) => {
       this.categoria = resp
     })
   }

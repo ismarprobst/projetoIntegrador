@@ -14,30 +14,30 @@ export class VendaService {
   ) { }
 
   token = {
-    headers: new HttpHeaders().set('Authorization',environment.token)
+    headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
-  refreshToken(){
+  refreshToken() {
     this.token = {
-      headers: new HttpHeaders().set('Authorization',environment.token)
+      headers: new HttpHeaders().set('Authorization', environment.token)
     }
   }
 
-  getByIdVenda(idVenda: number):Observable<Venda>{
-    return this.http.get<Venda>(`https://enatu-backend.herokuapp.com/pedido/id/${idVenda}`,this.token)
+  getByIdVenda(idVenda: number): Observable<Venda> {
+    return this.http.get<Venda>(`https://enatu-backend.herokuapp.com/pedido/id/${idVenda}`, this.token)
   }
 
-  getAllVenda():Observable<Venda[]>{
-    return this.http.get<Venda[]>('https://enatu-backend.herokuapp.com/pedido/todos',this.token)
+  getAllVenda(): Observable<Venda[]> {
+    return this.http.get<Venda[]>('https://enatu-backend.herokuapp.com/pedido/todos', this.token)
   }
 
-  postVenda(idProduto: number, idUsuario: number,venda: Venda):Observable<Venda>{
-    return this.http.post<Venda>(`https://enatu-backend.herokuapp.com/pedido/novo/usuario/${idUsuario}/produto/${idProduto}`,venda,this.token)
+  postVenda(idProduto: number, idUsuario: number, venda: Venda): Observable<Venda> {
+    return this.http.post<Venda>(`https://enatu-backend.herokuapp.com/pedido/novo/usuario/${idUsuario}/produto/${idProduto}`, venda, this.token)
 
   }
 
-  deleteVenda(idVenda: number){
-    return this.http.delete(`https://enatu-backend.herokuapp.com/pedido/deletarPedido/${idVenda}`,this.token)
+  deleteVenda(idVenda: number) {
+    return this.http.delete(`https://enatu-backend.herokuapp.com/pedido/deletarPedido/${idVenda}`, this.token)
 
   }
 }
