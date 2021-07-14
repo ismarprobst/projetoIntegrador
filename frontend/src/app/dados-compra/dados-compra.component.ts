@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Produtos } from '../model/Produtos';
+import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service';
 import { ProdutosService } from '../service/produtos.service';
 
@@ -25,7 +26,8 @@ export class DadosCompraComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private produtosService: ProdutosService,
-    public auth:AuthService
+    public auth:AuthService,
+    private alertas: AlertasService
   
 
   ) { }
@@ -33,7 +35,7 @@ export class DadosCompraComponent implements OnInit {
   ngOnInit(){
     window.scroll(0,0)
     if(environment.token == ''){
-      alert('Você precisa estar logado para acessar essa página!')
+      this.alertas.showAlertDanger('Você precisa estar logado para acessar essa página!')
       this.router.navigate(["/entrar"])
     }
     
@@ -57,7 +59,7 @@ export class DadosCompraComponent implements OnInit {
 
   retirar(){
     if(this.quantidade == 1){
-      alert('Não é possível zerar o carrinho!')
+      this.alertas.showAlertDanger('Não é possível zerar o carrinho!')
     }else{
       this.quantidade -= 1
     }
@@ -86,36 +88,32 @@ export class DadosCompraComponent implements OnInit {
       
       if (this.validaDoador== "sim") {
         this.desconto()
-        alert("Voce ganhou um desconto de 10%! O valor final ficará R$" + (this.produto.preco).toFixed(2))
-        alert("Dados enviados para processamento! Em breve você reberá um email ;)")
+        this.alertas.showAlertSuccess("Você ganhou um desconto de 10%! O valor final ficará R$" + (this.produto.preco).toFixed(2) +"  -   " + "Dados enviados para processamento! Em breve você receberá um email !")
+        
         this.router.navigate(['/home'])
       } else if(this.validaDoador == "nao"){
-        alert("Que pena! Se fosse doador receberia um desconto de 10%")
-        alert("Dados enviados para processamento! Em breve você reberá um email ;)")
+        this.alertas.showAlertSuccess("Que pena! Doe sangue e ganhe desconto de 10% em nossos produtos."+"  -   " + "Dados enviados para processamento! Em breve você receberá um email !")
         this.router.navigate(['/home'])
         
       } else {
-        alert("Favor, escolha uma opção")
+        this.alertas.showAlertDanger("Por favor, escolha uma opção")
       }
 
       } else if(this.validaPagamento == "boleto"){
       
       if (this.validaDoador== "sim") {
         this.desconto()
-        alert("Voce ganhou um desconto de 10%! O valor final ficará R$" + (this.produto.preco).toFixed(2))
-        alert("Em breve você reberá o boleto no seu um email!")
-
+        this.alertas.showAlertSuccess("Você ganhou um desconto de 10%! O valor final ficará R$" + (this.produto.preco).toFixed(2)+"  -   " + "Em breve você reberá o boleto no seu email!")
         this.router.navigate(['/home'])
       } else if(this.validaDoador == "nao"){
-        alert("Que pena! Se fosse doador receberia um desconto de 10%")
-        alert("Em breve você reberá o boleto no seu email!")
+        this.alertas.showAlertDanger("Que pena! Doe sangue e ganhe desconto de 10% em nossos produtos."+"  -   " + "Em breve você reberá o boleto no seu um email!")
         this.router.navigate(['/home'])
       } else {
-        alert("Favor, escolha uma opção")
+        this.alertas.showAlertDanger("Por favor, escolha uma opção")
       }
      
     }else {
-      alert("Selecione uma opção de pagamento!")
+      this.alertas.showAlertDanger("Selecione uma opção de pagamento!")
     }
 
   }
@@ -124,38 +122,34 @@ export class DadosCompraComponent implements OnInit {
   finalizarDoacao(){
     if(this.validaPagamento == "cartao"){
       
-      if (this.validaDoador== "sim") {
+      if (this.validaDoador == "sim") {
         this.desconto()
-        alert("Voce ganhou um desconto de 10%! O valor final ficará R$" + (this.produto.preco).toFixed(2))
-        alert("Obrigado pela doação! Dados enviados para processamento. Em breve você reberá um email")
+        this.alertas.showAlertSuccess("Voce ganhou um desconto de 10%! O valor final ficará R$" + (this.produto.preco).toFixed(2)+"  -   " + "Obrigado pela doação! Dados enviados para processamento. Em breve você receberá um email")
         this.router.navigate(['/home'])
       } else if(this.validaDoador == "nao"){
-        alert("Que pena! Se fosse doador receberia um desconto de 10%")
-        alert("Obrigado pela doação! Dados enviados para processamento. Em breve você reberá um email")
+        this.alertas.showAlertDanger("Que pena! Doe sangue e ganhe desconto de 10% em nossos produtos.")
+        this.alertas.showAlertInfo("Obrigado pela doação! Dados enviados para processamento. Em breve você receberá um email")
         this.router.navigate(['/home'])
         
       } else {
-        alert("Favor, escolha uma opção")
+        this.alertas.showAlertDanger("Por favor, escolha uma opção")
       }
 
       } else if(this.validaPagamento == "boleto"){
       
       if (this.validaDoador== "sim") {
         this.desconto()
-        alert("Voce ganhou um desconto de 10%! O valor final ficará R$" + (this.produto.preco).toFixed(2))
-        alert("Obrigado pela doação! Em breve você reberá o boleto no seu um email!")
+        this.alertas.showAlertInfo("Você ganhou um desconto de 10%! O valor final ficará R$" + (this.produto.preco).toFixed(2) +"  -   " +"Obrigado pela doação! Em breve você receberá o boleto no seu um email!")
         this.router.navigate(['/home'])
       } else if(this.validaDoador == "nao"){
-        alert("Que pena! Se fosse doador receberia um desconto de 10%")
-        alert("Obrigado pela doação! Em breve você reberá o boleto no seu um email!")
-
+        this.alertas.showAlertDanger("Que pena! Doe sangue e ganhe desconto de 10% em nossos produtos." +"  -   " +"Obrigado pela doação! Em breve você receberá o boleto no seu email!")
         this.router.navigate(['/home'])
       } else {
-        alert("Favor, escolha uma opção")
+        this.alertas.showAlertDanger("Por favor, escolha uma opção")
       }
      
     }else {
-      alert("Selecione uma opção de pagamento!")
+      this.alertas.showAlertDanger("Selecione uma opção de pagamento!")
     }
   }
 
