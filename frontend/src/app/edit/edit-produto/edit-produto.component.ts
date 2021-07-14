@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Categoria } from 'src/app/model/Categoria';
 import { Produtos } from 'src/app/model/Produtos';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { CategoriaService } from 'src/app/service/categoria.service';
 import { ProdutosService } from 'src/app/service/produtos.service';
 import { environment } from 'src/environments/environment.prod';
@@ -24,7 +25,8 @@ export class EditProdutoComponent implements OnInit {
     private router:Router,
     private route: ActivatedRoute,
     private produtosService: ProdutosService,
-    private categoriaService: CategoriaService
+    private categoriaService: CategoriaService,
+    private alertas: AlertasService
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +35,7 @@ export class EditProdutoComponent implements OnInit {
     }
 
     if (environment.nome != "admin"){
-      alert("Você precisa ser administrador para acesar essa rota")
+      this.alertas.showAlertDanger("Você precisa ser administrador para acesar essa rota")
       this.router.navigate(['/home'])
     }
     
@@ -64,7 +66,7 @@ export class EditProdutoComponent implements OnInit {
   atualizar(){
     this.produtosService.putProduto(this.idProduto, this.produto).subscribe((resp: Produtos)=>{
       this.produto = resp
-      alert('Produto atualizado')
+      this.alertas.showAlertSuccess('Produto atualizado')
       this.router.navigate(['/admin-produto'])
     })
   }
