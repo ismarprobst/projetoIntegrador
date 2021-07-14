@@ -24,20 +24,20 @@ export class VendaService {
   }
 
   getByIdVenda(idVenda: number):Observable<Venda>{
-    return this.http.get<Venda>(`http://localhost:8080/pedido/id/${idVenda}`,this.token)
+    return this.http.get<Venda>(`https://enatu-backend.herokuapp.com/pedido/id/${idVenda}`,this.token)
   }
 
   getAllVenda():Observable<Venda[]>{
-    return this.http.get<Venda[]>('http://localhost:8080/pedido/todos',this.token)
+    return this.http.get<Venda[]>('https://enatu-backend.herokuapp.com/pedido/todos',this.token)
   }
 
   postVenda(idProduto: number, idUsuario: number,venda: Venda):Observable<Venda>{
-    return this.http.post<Venda>(`http://localhost:8080/pedido/novo/usuario/${idUsuario}/produto/${idProduto}`,venda,this.token)
+    return this.http.post<Venda>(`https://enatu-backend.herokuapp.com/pedido/novo/usuario/${idUsuario}/produto/${idProduto}`,venda,this.token)
 
   }
 
   deleteVenda(idVenda: number){
-    return this.http.delete(`http://localhost:8080/pedido/deletarPedido/${idVenda}`,this.token)
+    return this.http.delete(`https://enatu-backend.herokuapp.com/pedido/deletarPedido/${idVenda}`,this.token)
 
   }
 }
