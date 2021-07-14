@@ -25,14 +25,14 @@ export class AuthService {
   }
 
   entrar(userLogin: UserLogin): Observable<UserLogin>{
-    return this.http.post<UserLogin>('http://localhost:8080/usuario/logar',userLogin)
+    return this.http.post<UserLogin>('https://enatu-backend.herokuapp.com/usuario/logar',userLogin)
   }
   cadastrar(usuario:Usuario):Observable<Usuario>{
-    return this.http.post<Usuario>('http://localhost:8080/usuario/cadastrar',usuario)
+    return this.http.post<Usuario>('https://enatu-backend.herokuapp.com/usuario/cadastrar',usuario)
   }
 
   getByIdUser(id:number):Observable<Usuario>{
-    return this.http.get<Usuario>(`https://localhost:8080/usuario/id/${id}`,this.token)
+    return this.http.get<Usuario>(`https://enatu-backend.herokuapp.com/usuario/id/${id}`,this.token)
   }
 
   logado(){
