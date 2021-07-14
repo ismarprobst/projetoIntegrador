@@ -1,0 +1,15 @@
+.bg {
+    background-color: #418B88;
+}
+
+.bg-box {
+    background: hsla(0,0%,100%,.35);
+    border-radius: 10px;
+    width: 200px;
+    height: 700px;
+    
+}
+
+.lb{
+    width: 90px !important;
+}

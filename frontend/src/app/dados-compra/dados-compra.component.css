@@ -1,0 +1,52 @@
+
+.fa:hover{
+    
+    font-size: 15pt;
+    
+}
+
+ul.social-network{
+    list-style: none;
+    padding: 0;
+}
+ul.social-network li{
+    display: inline;
+    margin: 0;
+    padding: 5px;
+}
+.fa{
+    font-size: 20pt;
+    color: #2e5266;
+    padding: 10px;
+}
+.fa-facebook-square:hover{
+    color:#3b5998
+}
+.fa-instagram:hover{
+    color:#c13584
+}
+.fa-linkedin-square:hover{
+    color:#0072b1;
+}
+
+.rodape{
+    background-color: #174b87;
+    color: white;
+}
+
+.rodape2{
+    background-color: #2e5266;
+    color: white;
+}
+
+
+.rodape-baixo{
+    position: fixed;
+    bottom: 0px;
+    width: 100%
+
+}
+
+.bg-jumbotrom{
+    background-color: #418B88;
+}

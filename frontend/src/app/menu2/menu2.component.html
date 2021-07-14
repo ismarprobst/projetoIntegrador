@@ -1,0 +1,66 @@
+<style>
+    @import url('http://fonts.cdnfonts.com/css/constantine');
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light barra-navegacao fixed-top">
+    <div class="container-fluid d-flex justify-content-between">
+
+
+        <div><a class="navbar-brand text-light letra mg-left" href="#">E-N@TU</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado"
+                aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+
+
+        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+            <ul class="navbar-nav mr-auto navbar-nav ml-auto automx- text-center">
+                <li class="nav-item active">
+                    <a class="nav-link text-light font-weight-bold " hrf="#" routerLink='/home'>Home <span
+                            class="sr-only">(página
+                            atual)</span></a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link text-light font-weight-bold" routerLink='/usuario-produto'>Produtos <span
+                            class="sr-only">(página
+                            atual)</span></a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link text-light font-weight-bold" routerLink='/quem-somos'>Quem somos <span
+                            class="sr-only">(página
+                            atual)</span></a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link text-light font-weight-bold" href="#formulario-contato">Contato <span
+                            class="sr-only">(página
+                            atual)</span></a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+
+                <li class="nav-item active pl-3">
+                    <a class="nav-link text-light font-weight-bold " href="#">Olá, {{nome}} <span
+                            class="sr-only">(página
+                            atual)</span></a>
+                </li>
+                <li class="nav-item pl-3">
+                    <!-- padding left-3  -->
+                    <a (click)='sair()' class="m-0 font-weight-bold text-white fs-16">Sair
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</nav>

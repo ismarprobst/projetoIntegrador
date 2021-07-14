@@ -1,0 +1,230 @@
+<app-menu *ngIf='!auth.logado()'></app-menu>
+<app-menu2 *ngIf='auth.logado()'></app-menu2>
+
+<!--Carrossel -->
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100 altura-img img-fluid" src="../../assets/img/WhatsApp Image 2021-06-26 at 17.44.24.png"
+        alt="Primeiro Slide">
+    </div>
+  </div>
+</div>
+<!--/Carrossel -->
+
+<!-- Jumbotron -->
+<div class="jumbotron jumbotron-fluid bg-jumbotrom">
+  <div class="container ">
+    <div class="row">
+      <div class="col text-center">
+        <h1 class="display-4 text-light font-weight-bold">Quer saber um pouco mais sobre a gente? </h1>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-center">
+        <button type="button" class="btn btn-outline-light font-weight-bold text-center mt-3">Clique aqui</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- /Jumbotron -->
+
+<!-- Container -->
+<div class="container">
+  <h2 class="text-center mb-4">Produtos</h2>
+  <div class="card-deck">
+    <div class="card cor-card">
+      <img class="card-img-top w-60 h-60 img-fluid" src="../../assets/img/Xambu2c.jpg" alt="Imagem de capa do card">
+      <div class="card-body text-center">
+        <h5 class="card-title font-weight-bold fs-20 text-light">Produtos Sustentáveis</h5>
+        <p class="card-text fs-15 text-light">Temos produtos que diminuim o impacto ambiental.</p>
+      </div>
+    </div>
+    <div class="card cor-card">
+      <img class="card-img-top w-219 h-470 img-fluid" src="../../assets/img/Remedio2.jpg" alt="Imagem de capa do card">
+      <div class="card-body text-center">
+        <h5 class="card-title font-weight-bold fs-20 text-light">Medicamentos</h5>
+        <p class="card-text fs-15 text-light">Temos remédios com valores acessíveis para todas as pessoas.</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center mb-5 mt-3">
+      <button type="button" class="btn btn-info font-weight-bold text-center mt-3">Ver todos</button>
+    </div>
+  </div>
+</div>
+<!-- /Container -->
+
+<!-- Carrossel -->
+<div id="carouselExampleIndicators" class="carousel slide" data-interval="4000">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100 img-fluid" src="../../assets/img/Carrosel1.jpg" alt="Primeiro Slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100 img-fluid" src="../../assets/img/Carrossel2.jpg" alt="Segundo Slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100 img-fluid" src="../../assets/img/Carrosel3.jpg" alt="Terceiro Slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Anterior</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Próximo</span>
+  </a>
+</div>
+<!--/Carrossel -->
+
+<!-- Doação de Sangue -->
+<div class="container">
+  <div class="row d-flex align-items-center">
+    <div class="col-md-6">
+      <img class="img-fluid" src="../../assets/img/DoacaoSangue2.png" alt="" width="500px" height="500px">
+
+    </div>
+
+    <div class="col-md-6">
+      <h4 class="card-title d-flex justify-content-center text-center mb-4 font-weight-bold">Doação de Sangue</h4>
+      <p class="card-text  text-justify fs-15 ">Temos um programa que contempla doadores de sangue com descontos em
+        produtos.
+        Dessa forma, incentivamos a doação para salvar vidas.</p>
+
+      <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent1">
+
+          <div class="jumbotron jumbotron-fluid cardcolor">
+            <div class="container">
+              <p class="lead">Se você for doador de sangue, é possível obter o beneficio de
+                desconto de 10% sobre o preço de venda em nossos produtos.
+                Não se esqueça de informar se é doador de sangue antes da finalização da compra.</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarToggleExternalContent1" aria-controls="navbarToggleExternalContent1"
+            aria-expanded="false" aria-label="Alterna navegação">
+            <span><i class="fa fa-arrow-down" aria-hidden="true"></i></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /Doação de Sangue -->
+
+
+  <!-- /Doação de Remédio -->
+  <div class="row d-flex align-items-center">
+    <div class="col-md-6">
+      <img class="img-fluid" src="../../assets/img/DoacaoRemedio.png" alt="" width="500px" height="500px">
+
+    </div>
+
+    <div class="col-md-6">
+      <h4 class="card-title d-flex justify-content-center text-center font-weight-bold">Doação de Remédios</h4>
+      <p class="card-text  text-justify fs-15 ">Nossos clientes são incentivados a doar medicamentos para pessoas que
+        necessitam. Quer saber como funciona? </p>
+
+      <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent2">
+
+          <div class="jumbotron jumbotron-fluid cardcolor">
+            <div class="container">
+              <p class="lead">Ao finalizar a compra, clique no botão "Doe para uma ONG", e você já vai estar comprando
+                para uma pessoa que
+                necessita. Tudo isso ficará a cargo de ONG's parceiras.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarToggleExternalContent2" aria-controls="navbarToggleExternalContent2"
+            aria-expanded="false" aria-label="Alterna navegação">
+            <span><i class="fa fa-arrow-down " aria-hidden="true"></i></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <!-- Doação de Remédio -->
+
+  <!-- Descarde de Remédio -->
+  <div class="row d-flex align-items-center">
+    <div class="col-md-6">
+      <img class="img-fluid" src="../../assets/img/DescardeRemedio.png" alt="" width="500px" height="500px">
+
+    </div>
+
+    <div class="col-md-6">
+      <h4 class="card-title d-flex justify-content-center text-center font-weight-bold">Descarte de Remédios</h4>
+      <p class="card-text  text-justify fs-15 ">Temos parceria com a ONG chamada Doe Med, que é responsável pelo
+        descarte consciente de remédios.</p>
+
+      <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+
+          <div class="jumbotron jumbotron-fluid cardcolor">
+            <div class="container">
+              <p class="lead">Ligue para o telefone 0800 111 2222, e agende o recolhimento de seus medicamentos. A ONG
+                será responsável por todo o processo de doação de remédios que poderão ser repassado para a população de
+                baixa renda.</p>
+
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+            aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Alterna navegação">
+            <span><i class="fa fa-arrow-down" aria-hidden="true"></i></span>
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Descarde de Remédio -->
+</div>
+
+<!-- ONG'S parceiras -->
+<p class=" text-dark font-weight-bold fs-25 text-center">ONG'S parceiras</p>
+<div class="jumbotron jumbotron-fluid bg-jumbotrom mb-0">
+  <div class="container">
+
+    <div class="row ">
+
+      <div class="col-md-4 text-center">
+        <img class="img-fluid mb-3" src="../../assets/img/OngSangue.png" alt="" width="100px" height="100px">
+        <p class="text-light font-weight-bold fs-20 text-center">Doe+</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <img class="img-fluid mb-3 " src="../../assets/img/OngRemedios.png" alt="" width="100px" height="100px">
+        <p class="text-light font-weight-bold fs-20 text-center">Remédio do bem </p>
+      </div>
+      <div class="col-md-4 text-center">
+        <img class="img-fluid mb-3" src="../../assets/img/OngDoacao.png" alt="" width="100px" height="100px">
+        <p class="text-light font-weight-bold fs-20 text-center">Doe Med</p>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- /ONG'S parceiras -->
+
+<app-rodape></app-rodape>

@@ -1,0 +1,179 @@
+<app-menu *ngIf='!auth.logado()'></app-menu>
+<app-menu2 *ngIf='auth.logado()'></app-menu2>
+
+
+<div class="row d-flex my-5">
+    <div class="col-md-12">
+        <h2 class="text-center mt-5">MEU CARRINHO</h2>
+    </div>
+</div>
+
+<div *ngIf="codigo != 0" class="container mt-5">
+    <div class="row d-flex justify-content-center align-items-center pb-5 shadow-lg p-3 mb-5 bg-white rounded">
+
+        <div class="col-md-12">
+
+            <div class="row d-flex justify-content-center ">
+
+                <div class="col-md-4 pt-4 border">
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <img class="rounded-left img-fluid shadow-lg p-3 mb-5 bg-white rounded"
+                                [src]="produto.fotoProduto" alt="Foto do(a) {{produto.nomeProduto}}">
+                        </div>
+
+                        <div class="col-md-6">
+                            <h5 class="font-weight-bolder">{{produto.nomeProduto}}</h5>
+                            <p class="font-weight-lighte">{{produto.descricao}}</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-2 pt-4 border text-center">
+                    <h4>PREÇO</h4>
+                    <h6>R${{produto.preco}}</h6>
+                </div>
+
+                <div class="col-md-2 pt-5 border text-center">
+                    <button class="btn btn-warning" (click)="retirar()">-</button>
+                    <label class="border pl-2 pr-2">{{quantidade}}</label>
+                    <button class="btn btn-info" (click)="acrescentar()">+</button>
+                </div>
+
+                <div class="col-md-4 border-left">
+                    <h1 class="font-weight-bold">Resumo</h1>
+                    <hr>
+
+                    <div class="row-md-3 align-self-center">
+
+                        <h6>{{quantidade}} produto(s) | Preço total: <b>R${{quantidade * produto.preco | number:
+                                '1.2'}}</b>
+                        </h6>
+
+                    </div>
+
+                    <hr>
+
+                    <div class="row-md-1">
+
+                        <button class="btn btn-danger w-100" data-toggle="modal"
+                            data-target="#pagamento">Comprar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="4000">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner" >
+        <div class="carousel-item active">
+            <img class="d-block w-100" height="300px" src="../../assets/img/carrossel-dados-2.jpeg"
+                alt="Primeiro Slide">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" height="300px" src="../../assets/img/carrossel-compras-2.jpeg"
+                alt="Segundo Slide">
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Anterior</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Próximo</span>
+    </a>
+</div>
+
+<app-rodape></app-rodape>
+
+
+<!-- Modal -->
+<div class="modal fade" id="pagamento" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="pagamento" aria-hidden="true">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Pagamento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="formadepagamento">Forma de pagamento</label>
+                    </div>
+
+                    <select [(ngModel)]="validaPagamento" class="custom-select" id="formadepagamento"
+                        (change)="validarPagamento(validaPagamento)">
+                        <option value="" disabled selected>Selecione</option>
+                        <option value="cartao">Cartão</option>
+                        <option value="boleto">Boleto</option>
+                    </select>
+                </div>
+
+                <div *ngIf="validaPagamento == 'boleto'" class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Digite seu email" aria-label="email"
+                        aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">@exemplo.com</span>
+                    </div>
+                </div>
+
+                <form *ngIf="validaPagamento == 'cartao'" class="checkout">
+                    <p>
+                        <input type="text" class="p-2 m-2" placeholder="Seu nome">
+                        <input type="text" class="p-2 m-2" placeholder="Mês/vencimento">
+                        <input type="text" class="p-2 m-2" placeholder="Ano/vencimento">
+                    </p>
+                    <p>
+                        <input type="text" class="p-2 m-2" placeholder="4111 1111 1111 1111">
+                        <input type="text" class="p-2 m-2" alt="Código de segurança" placeholder="CVC">
+                    </p>
+
+                </form>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="doador">Doador de sangue?</label>
+                    </div>
+                    <select [(ngModel)]="validaDoador" class="custom-select" id="doador"
+                        (change)="validarDoador(validaDoador)">
+                        <option value="" disabled selected>Selecione</option>
+                        <option value="sim">Sim</option>
+                        <option value="nao">Não</option>
+                    </select>
+                </div>
+
+                <div>
+                    <button type="button" class="btn btn-success mr-4" (click)="finalizarDoacao()"
+                        data-dismiss="modal">Doe para uma ONG</button>
+                    <button type="button" class="btn btn-success" (click)="finalizarVenda()"
+                        data-dismiss="modal">Finalizar
+                        compra</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
