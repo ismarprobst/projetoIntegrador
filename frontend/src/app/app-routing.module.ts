@@ -15,25 +15,24 @@ import { UsuarioProdutoComponent } from './usuario-produto/usuario-produto.compo
 
 const routes: Routes = [
 
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 
-  {path:'entrar',component: EntrarComponent},
-  {path: 'cadastrar', component: CadastroComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'admin-produto', component: AdminProdutoComponent},
-  {path: 'categorias', component: CategoriasComponent},
-  {path:'quem-somos',component: QuemsomosComponent},
-  {path:'dados-compra/:id',component: DadosCompraComponent},
-  {path: 'usuario-produto', component: UsuarioProdutoComponent},
-  
+  { path: 'entrar', component: EntrarComponent },
+  { path: 'cadastrar', component: CadastroComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'admin-produto', component: AdminProdutoComponent },
+  { path: 'categorias', component: CategoriasComponent },
+  { path: 'quem-somos', component: QuemsomosComponent },
+  { path: 'dados-compra/:id', component: DadosCompraComponent },
+  { path: 'usuario-produto', component: UsuarioProdutoComponent },
 
-  {path:'edit-categoria/:id',component: EditCategoriaComponent},
-  {path:'delete-categoria/:id',component: DeleteCategoriaComponent},
+
+  { path: 'edit-categoria/:id', component: EditCategoriaComponent },
+  { path: 'delete-categoria/:id', component: DeleteCategoriaComponent },
   //Rotas para PUT e DELETE de produto
-  {path:'edit-produto/:id',component: EditProdutoComponent},
-  {path:'delete-produto/:id',component: DeleteProdutoComponent}
-  
-  
+  { path: 'edit-produto/:id', component: EditProdutoComponent },
+  { path: 'delete-produto/:id', component: DeleteProdutoComponent }
+
 ];
 
 @NgModule({

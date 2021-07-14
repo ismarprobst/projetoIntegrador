@@ -22,20 +22,20 @@ export class AdminProdutoComponent implements OnInit {
   listaCategorias: Categoria[]
   categoria: Categoria = new Categoria()
 
-  constructor(public auth: AuthService, 
-    private router: Router, 
+  constructor(public auth: AuthService,
+    private router: Router,
     private produtosService: ProdutosService,
     private categoriaService: CategoriaService,
     private alertas: AlertasService
-    ) { }
+  ) { }
 
   ngOnInit() {
-    if (environment.token == ''){
+    if (environment.token == '') {
       //alert('Sua sessão expirou, faça login novamente.')
       this.router.navigate(['/entrar'])
     }
 
-    if (environment.nome != "admin"){
+    if (environment.nome != "admin") {
       this.alertas.showAlertSuccess("Você precisa ser administrador para acesar essa rota")
       this.router.navigate(['/home'])
     }
@@ -46,34 +46,35 @@ export class AdminProdutoComponent implements OnInit {
     this.getAllCategorias()
   }
 
-  getAllCategorias(){
-    this.categoriaService.getAllCategoria().subscribe((resp: Categoria[])=>{
+  getAllCategorias() {
+    this.categoriaService.getAllCategoria().subscribe((resp: Categoria[]) => {
       this.listaCategorias = resp
     })
   }
 
-  findAllProduto(){
-    this.produtosService.getAllProduto().subscribe((resp: Produtos[])=>{
+  findAllProduto() {
+    this.produtosService.getAllProduto().subscribe((resp: Produtos[]) => {
       this.listaProdutos = resp
     })
   }
-  findByIdCategoria(){
-    this.categoriaService.getByIdCategoria(this.idCategoria).subscribe((resp: Categoria)=>{
+  findByIdCategoria() {
+    this.categoriaService.getByIdCategoria(this.idCategoria).subscribe((resp: Categoria) => {
       this.categoria = resp
 
       this.produto.categoria = resp
-      
-    
+
+
     })
   }
 
 
-  cadastrarProduto(){
-    this.produtosService.postProduto(this.produto).subscribe((resp: Produtos)=>{
+  cadastrarProduto() {
+    this.produtosService.postProduto(this.produto).subscribe((resp: Produtos) => {
       this.produto = resp
       this.alertas.showAlertSuccess("Produto cadastrado com sucesso")
       this.findAllProduto()
       this.produto = new Produtos()
+      this.idCategoria = 0
     })
   }
 

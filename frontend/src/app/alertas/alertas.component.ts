@@ -16,7 +16,7 @@ export class AlertasComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onClose(){
+  onClose() {
     this.modal.hide()
   }
 

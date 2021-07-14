@@ -11,40 +11,40 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./edit-categoria.component.css']
 })
 export class EditCategoriaComponent implements OnInit {
-categoria: Categoria = new Categoria()
-idCategoria:number
+  categoria: Categoria = new Categoria()
+  idCategoria: number
 
   constructor(
-    
-    private router:Router,
+
+    private router: Router,
     private route: ActivatedRoute,
     private categoriaService: CategoriaService,
     private alertas: AlertasService
-    
-    ) { }
 
-  ngOnInit(){
+  ) { }
+
+  ngOnInit() {
     if (environment.token == "") {
       this.router.navigate(["/entrar"])
     }
 
-    if (environment.nome != "admin"){
+    if (environment.nome != "admin") {
       this.alertas.showAlertDanger("Você precisa ser administrador para acesar essa rota")
       this.router.navigate(['/home'])
     }
-    
+
     this.idCategoria = this.route.snapshot.params["id"]
     this.findByIdCategoria(this.idCategoria)
   }
-  
-  findByIdCategoria(id:number){
-    this.categoriaService.getByIdCategoria(id).subscribe((resp: Categoria)=>{
-      this.categoria=resp
+
+  findByIdCategoria(id: number) {
+    this.categoriaService.getByIdCategoria(id).subscribe((resp: Categoria) => {
+      this.categoria = resp
     })
 
   }
-  atualizar(){
-    this.categoriaService.putCategoria(this.idCategoria, this.categoria).subscribe((resp: Categoria)=>{
+  atualizar() {
+    this.categoriaService.putCategoria(this.idCategoria, this.categoria).subscribe((resp: Categoria) => {
       this.categoria = resp
       this.alertas.showAlertSuccess('Categoria atualizada')
       this.router.navigate(['/categorias'])

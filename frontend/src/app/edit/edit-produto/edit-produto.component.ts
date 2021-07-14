@@ -22,7 +22,7 @@ export class EditProdutoComponent implements OnInit {
   idCategoria: number
 
   constructor(
-    private router:Router,
+    private router: Router,
     private route: ActivatedRoute,
     private produtosService: ProdutosService,
     private categoriaService: CategoriaService,
@@ -34,37 +34,37 @@ export class EditProdutoComponent implements OnInit {
       this.router.navigate(["/entrar"])
     }
 
-    if (environment.nome != "admin"){
+    if (environment.nome != "admin") {
       this.alertas.showAlertDanger("Você precisa ser administrador para acesar essa rota")
       this.router.navigate(['/home'])
     }
-    
+
     this.idProduto = this.route.snapshot.params["id"]
     this.findByIdProduto(this.idProduto)
     this.findAllCategorias()
   }
 
-  findByIdCategoria(){
-    this.categoriaService.getByIdCategoria(this.idCategoria).subscribe((resp: Categoria)=> {
+  findByIdCategoria() {
+    this.categoriaService.getByIdCategoria(this.idCategoria).subscribe((resp: Categoria) => {
       this.categoria = resp
     })
 
   }
 
-  findAllCategorias(){
-    this.categoriaService.getAllCategoria().subscribe((resp: Categoria[])=>{
+  findAllCategorias() {
+    this.categoriaService.getAllCategoria().subscribe((resp: Categoria[]) => {
       this.listaCategorias = resp
-    }    )
-  }
-
-  findByIdProduto(id:number){
-    this.produtosService.getByIdProduto(id).subscribe((resp: Produtos)=>{
-      this.produto=resp
     })
   }
 
-  atualizar(){
-    this.produtosService.putProduto(this.idProduto, this.produto).subscribe((resp: Produtos)=>{
+  findByIdProduto(id: number) {
+    this.produtosService.getByIdProduto(id).subscribe((resp: Produtos) => {
+      this.produto = resp
+    })
+  }
+
+  atualizar() {
+    this.produtosService.putProduto(this.idProduto, this.produto).subscribe((resp: Produtos) => {
       this.produto = resp
       this.alertas.showAlertSuccess('Produto atualizado')
       this.router.navigate(['/admin-produto'])

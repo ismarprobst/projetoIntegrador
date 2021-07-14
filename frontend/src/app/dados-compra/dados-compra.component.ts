@@ -26,129 +26,129 @@ export class DadosCompraComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private produtosService: ProdutosService,
-    public auth:AuthService,
+    public auth: AuthService,
     private alertas: AlertasService
-  
+
 
   ) { }
 
-  ngOnInit(){
-    window.scroll(0,0)
-    if(environment.token == ''){
+  ngOnInit() {
+    window.scroll(0, 0)
+    if (environment.token == '') {
       this.alertas.showAlertDanger('Você precisa estar logado para acessar essa página!')
       this.router.navigate(["/entrar"])
     }
-    
+
 
     this.codigo = this.route.snapshot.params['id']
 
-    this. getByIdProduto(this.codigo)
+    this.getByIdProduto(this.codigo)
 
   }
-  
-  getByIdProduto(id: number){
-    this.produtosService. getByIdProduto(id).subscribe((resp: Produtos) => {
+
+  getByIdProduto(id: number) {
+    this.produtosService.getByIdProduto(id).subscribe((resp: Produtos) => {
       this.produto = resp
 
     })
   }
 
-  acrescentar(){
+  acrescentar() {
     this.quantidade += 1
   }
 
-  retirar(){
-    if(this.quantidade == 1){
+  retirar() {
+    if (this.quantidade == 1) {
       this.alertas.showAlertDanger('Não é possível zerar o carrinho!')
-    }else{
+    } else {
       this.quantidade -= 1
     }
   }
 
-  validarPagamento(pagamento: string){
+  validarPagamento(pagamento: string) {
     console.log(pagamento)
   }
 
-  validarDoador(doador: string){
+  validarDoador(doador: string) {
     console.log(doador)
   }
 
-  comprar(){
+  comprar() {
     this.router.navigate(["/home"])
 
   }
 
-  desconto(){
+  desconto() {
     this.produto.preco = 0.90 * (this.produto.preco * this.quantidade)
   }
 
-  finalizarVenda(){
+  finalizarVenda() {
 
-    if(this.validaPagamento == "cartao"){
-      
-      if (this.validaDoador== "sim") {
+    if (this.validaPagamento == "cartao") {
+
+      if (this.validaDoador == "sim") {
         this.desconto()
-        this.alertas.showAlertSuccess("Você ganhou um desconto de 10%! O valor final ficará R$" + (this.produto.preco).toFixed(2) +"  -   " + "Dados enviados para processamento! Em breve você receberá um email !")
-        
+        this.alertas.showAlertSuccess("Você ganhou um desconto de 10%! O valor final ficará R$" + (this.produto.preco).toFixed(2) + "  -   " + "Dados enviados para processamento! Em breve você receberá um email !")
+
         this.router.navigate(['/home'])
-      } else if(this.validaDoador == "nao"){
-        this.alertas.showAlertSuccess("Que pena! Doe sangue e ganhe desconto de 10% em nossos produtos."+"  -   " + "Dados enviados para processamento! Em breve você receberá um email !")
+      } else if (this.validaDoador == "nao") {
+        this.alertas.showAlertSuccess("Que pena! Doe sangue e ganhe desconto de 10% em nossos produtos." + "  -   " + "Dados enviados para processamento! Em breve você receberá um email !")
         this.router.navigate(['/home'])
-        
+
       } else {
         this.alertas.showAlertDanger("Por favor, escolha uma opção")
       }
 
-      } else if(this.validaPagamento == "boleto"){
-      
-      if (this.validaDoador== "sim") {
+    } else if (this.validaPagamento == "boleto") {
+
+      if (this.validaDoador == "sim") {
         this.desconto()
-        this.alertas.showAlertSuccess("Você ganhou um desconto de 10%! O valor final ficará R$" + (this.produto.preco).toFixed(2)+"  -   " + "Em breve você reberá o boleto no seu email!")
+        this.alertas.showAlertSuccess("Você ganhou um desconto de 10%! O valor final ficará R$" + (this.produto.preco).toFixed(2) + "  -   " + "Em breve você reberá o boleto no seu email!")
         this.router.navigate(['/home'])
-      } else if(this.validaDoador == "nao"){
-        this.alertas.showAlertDanger("Que pena! Doe sangue e ganhe desconto de 10% em nossos produtos."+"  -   " + "Em breve você reberá o boleto no seu um email!")
+      } else if (this.validaDoador == "nao") {
+        this.alertas.showAlertDanger("Que pena! Doe sangue e ganhe desconto de 10% em nossos produtos." + "  -   " + "Em breve você reberá o boleto no seu um email!")
         this.router.navigate(['/home'])
       } else {
         this.alertas.showAlertDanger("Por favor, escolha uma opção")
       }
-     
-    }else {
+
+    } else {
       this.alertas.showAlertDanger("Selecione uma opção de pagamento!")
     }
 
   }
 
 
-  finalizarDoacao(){
-    if(this.validaPagamento == "cartao"){
-      
+  finalizarDoacao() {
+    if (this.validaPagamento == "cartao") {
+
       if (this.validaDoador == "sim") {
         this.desconto()
-        this.alertas.showAlertSuccess("Voce ganhou um desconto de 10%! O valor final ficará R$" + (this.produto.preco).toFixed(2)+"  -   " + "Obrigado pela doação! Dados enviados para processamento. Em breve você receberá um email")
+        this.alertas.showAlertSuccess("Voce ganhou um desconto de 10%! O valor final ficará R$" + (this.produto.preco).toFixed(2) + "  -   " + "Obrigado pela doação! Dados enviados para processamento. Em breve você receberá um email")
         this.router.navigate(['/home'])
-      } else if(this.validaDoador == "nao"){
+      } else if (this.validaDoador == "nao") {
         this.alertas.showAlertDanger("Que pena! Doe sangue e ganhe desconto de 10% em nossos produtos.")
         this.alertas.showAlertInfo("Obrigado pela doação! Dados enviados para processamento. Em breve você receberá um email")
         this.router.navigate(['/home'])
-        
+
       } else {
         this.alertas.showAlertDanger("Por favor, escolha uma opção")
       }
 
-      } else if(this.validaPagamento == "boleto"){
-      
-      if (this.validaDoador== "sim") {
+    } else if (this.validaPagamento == "boleto") {
+
+      if (this.validaDoador == "sim") {
         this.desconto()
-        this.alertas.showAlertInfo("Você ganhou um desconto de 10%! O valor final ficará R$" + (this.produto.preco).toFixed(2) +"  -   " +"Obrigado pela doação! Em breve você receberá o boleto no seu um email!")
+        this.alertas.showAlertInfo("Você ganhou um desconto de 10%! O valor final ficará R$" + (this.produto.preco).toFixed(2) + "  -   " + "Obrigado pela doação! Em breve você receberá o boleto no seu um email!")
         this.router.navigate(['/home'])
-      } else if(this.validaDoador == "nao"){
-        this.alertas.showAlertDanger("Que pena! Doe sangue e ganhe desconto de 10% em nossos produtos." +"  -   " +"Obrigado pela doação! Em breve você receberá o boleto no seu email!")
+      } else if (this.validaDoador == "nao") {
+        this.alertas.showAlertDanger("Que pena! Doe sangue e ganhe desconto de 10% em nossos produtos." + "  -   " + "Obrigado pela doação! Em breve você receberá o boleto no seu email!")
         this.router.navigate(['/home'])
       } else {
         this.alertas.showAlertDanger("Por favor, escolha uma opção")
       }
-     
-    }else {
+
+    } else {
       this.alertas.showAlertDanger("Selecione uma opção de pagamento!")
     }
   }

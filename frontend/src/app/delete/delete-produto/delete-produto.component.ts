@@ -24,30 +24,30 @@ export class DeleteProdutoComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if(environment.token ==''){
+    if (environment.token == '') {
       this.router.navigate(['/entrar'])
     }
 
-    if (environment.nome != "admin"){
+    if (environment.nome != "admin") {
       this.alertas.showAlertDanger("Você precisa ser administrador para acesar essa rota")
       this.router.navigate(['/home'])
     }
-    
-    this.idProduto = this.route. snapshot.params['id']
+
+    this.idProduto = this.route.snapshot.params['id']
     this.findByIdProduto(this.idProduto)
   }
 
-  findByIdProduto(id:number){
-    this.produtosService.getByIdProduto(id).subscribe((resp: Produtos)=>{
-      this.produto=resp
+  findByIdProduto(id: number) {
+    this.produtosService.getByIdProduto(id).subscribe((resp: Produtos) => {
+      this.produto = resp
     })
 
   }
 
-  apagar(){
-    this.produtosService.deleteProduto(this.idProduto).subscribe(()=>{
-      this.alertas.showAlertSuccess('Produto apagado com sucesso') 
-     this.router.navigate(['/admin-produto'])
+  apagar() {
+    this.produtosService.deleteProduto(this.idProduto).subscribe(() => {
+      this.alertas.showAlertSuccess('Produto apagado com sucesso')
+      this.router.navigate(['/admin-produto'])
     })
   }
 
