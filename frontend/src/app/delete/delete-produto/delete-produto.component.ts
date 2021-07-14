@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Produtos } from 'src/app/model/Produtos';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { ProdutosService } from 'src/app/service/produtos.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -17,7 +18,8 @@ export class DeleteProdutoComponent implements OnInit {
   constructor(
     private produtosService: ProdutosService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alertas: AlertasService
   ) { }
 
   ngOnInit(): void {
@@ -25,6 +27,12 @@ export class DeleteProdutoComponent implements OnInit {
     if(environment.token ==''){
       this.router.navigate(['/entrar'])
     }
+
+    if (environment.nome != "admin"){
+      this.alertas.showAlertDanger("Você precisa ser administrador para acesar essa rota")
+      this.router.navigate(['/home'])
+    }
+    
     this.idProduto = this.route. snapshot.params['id']
     this.findByIdProduto(this.idProduto)
   }
@@ -38,7 +46,7 @@ export class DeleteProdutoComponent implements OnInit {
 
   apagar(){
     this.produtosService.deleteProduto(this.idProduto).subscribe(()=>{
-     alert('Produto apagado com sucesso') 
+      this.alertas.showAlertSuccess('Produto apagado com sucesso') 
      this.router.navigate(['/admin-produto'])
     })
   }

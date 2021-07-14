@@ -1,6 +1,7 @@
  import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-quemsomos',
@@ -9,8 +10,9 @@ import { NgForm } from '@angular/forms';
 })
 export class QuemsomosComponent implements OnInit {
 
-  minhaDiv: Boolean = false;
-  constructor() {}
+  constructor(
+    public auth: AuthService
+  ) { }
 
 
   ngOnInit(): void {
@@ -41,15 +43,5 @@ export class QuemsomosComponent implements OnInit {
     }
   }
 
- /* seta1(){
-    console.log('entrei')
-  }
-  seta2(){
-    console.log('sair')
-  }
-*/
-seta1(){
-  this.minhaDiv = !this.minhaDiv
-}
 
 }

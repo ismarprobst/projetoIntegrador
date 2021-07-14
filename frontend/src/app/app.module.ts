@@ -24,6 +24,9 @@ import { DeleteCategoriaComponent } from './delete/delete-categoria/delete-categ
 import { EditProdutoComponent } from './edit/edit-produto/edit-produto.component';
 import { DeleteProdutoComponent } from './delete/delete-produto/delete-produto.component';
 import { UsuarioProdutoComponent } from './usuario-produto/usuario-produto.component';
+import { DadosCompraComponent } from './dados-compra/dados-compra.component';
+import { AlertasComponent } from './alertas/alertas.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -46,14 +49,17 @@ import { UsuarioProdutoComponent } from './usuario-produto/usuario-produto.compo
     EditProdutoComponent,
     DeleteProdutoComponent,
 
-    UsuarioProdutoComponent
+    UsuarioProdutoComponent,
+      DadosCompraComponent,
+      AlertasComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot()
   ],
   providers: [{
     provide: LocationStrategy,

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Categoria } from '../model/Categoria';
 import { Produtos } from '../model/Produtos';
+import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service';
 import { CategoriaService } from '../service/categoria.service';
 import { ProdutosService } from '../service/produtos.service';
@@ -24,13 +25,19 @@ export class AdminProdutoComponent implements OnInit {
   constructor(public auth: AuthService, 
     private router: Router, 
     private produtosService: ProdutosService,
-    private categoriaService: CategoriaService
+    private categoriaService: CategoriaService,
+    private alertas: AlertasService
     ) { }
 
   ngOnInit() {
     if (environment.token == ''){
       //alert('Sua sessão expirou, faça login novamente.')
       this.router.navigate(['/entrar'])
+    }
+
+    if (environment.nome != "admin"){
+      this.alertas.showAlertSuccess("Você precisa ser administrador para acesar essa rota")
+      this.router.navigate(['/home'])
     }
 
     this.produtosService.refreshToken()
@@ -64,7 +71,7 @@ export class AdminProdutoComponent implements OnInit {
   cadastrarProduto(){
     this.produtosService.postProduto(this.produto).subscribe((resp: Produtos)=>{
       this.produto = resp
-      alert("Produto cadastrado com sucesso")
+      this.alertas.showAlertSuccess("Produto cadastrado com sucesso")
       this.findAllProduto()
       this.produto = new Produtos()
     })

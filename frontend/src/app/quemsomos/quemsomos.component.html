@@ -1,4 +1,5 @@
-<app-menu></app-menu>
+<app-menu *ngIf='!auth.logado()'></app-menu> 
+<app-menu2 *ngIf='auth.logado()'></app-menu2>
 
 
 <!--Jumbotron-->
@@ -204,8 +205,9 @@
 
 <!--Formulario-->
 
-<div class="container mb-4" id="#contato">
-  <h4 class="text-center mb-4">Fale conosco</h4>
+
+<div class="container mb-4">
+  <h4 class="text-center mb-4" id="formulario-contato">Fale conosco</h4>
   <form #f="ngForm">
     <div class="row">
       <div class="col-md-3"></div>
@@ -216,6 +218,7 @@
           <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com">
 
         </div>
+
 
 
 
