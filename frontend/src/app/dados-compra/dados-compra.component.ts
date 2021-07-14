@@ -103,10 +103,10 @@ export class DadosCompraComponent implements OnInit {
 
       if (this.validaDoador == "sim") {
         this.desconto()
-        this.alertas.showAlertSuccess("Você ganhou um desconto de 10%! O valor final ficará R$" + (this.produto.preco).toFixed(2) + "  -   " + "Em breve você reberá o boleto no seu email!")
+        this.alertas.showAlertSuccess("Você ganhou um desconto de 10%! O valor final ficará R$" + (this.produto.preco).toFixed(2) + "  -   " + "Em breve você receberá o boleto no seu email!")
         this.router.navigate(['/home'])
       } else if (this.validaDoador == "nao") {
-        this.alertas.showAlertDanger("Que pena! Doe sangue e ganhe desconto de 10% em nossos produtos." + "  -   " + "Em breve você reberá o boleto no seu um email!")
+        this.alertas.showAlertDanger("Que pena! Doe sangue e ganhe desconto de 10% em nossos produtos." + "  -   " + "Em breve você receberá o boleto no seu um email!")
         this.router.navigate(['/home'])
       } else {
         this.alertas.showAlertDanger("Por favor, escolha uma opção")
