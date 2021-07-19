@@ -79,7 +79,7 @@
 
 <!--Card flip/Equipe-->
 
-<div class="jumbotron jumbotron-fluid cor-jumb-dev ">
+<div class="jumbotron jumbotron-fluid cor-jumb-dev mb-0 ">
   <h4 class="text-center mb-5 text-light">Passe o mouse para conhecer mais sobre nossos desenvolvedores</h4>
   <div class="container d-flex">
 
@@ -192,38 +192,5 @@
 <!-- /Jumbotron/Card Flip -->
 
 
-<!--Formulario-->
-
-<div class="container mb-4">
-  <h4 class="text-center mb-4" id="formulario-contato">Fale conosco</h4>
-  <form #f="ngForm">
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <input type="text" class="form-control" id='nome' placeholder="Nome Completo">
-        <div class="form-group">
-         
-          <label for="exampleFormControlInput1"></label>
-          <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com">
-        </div>
-
-
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1"></label>
-          <textarea class="form-control" style="resize: none" id="exampleFormControlTextarea1"
-            placeholder="Deixe sua mensagem" rows="3" id="assunto"></textarea>
-          <div id='txtAssunto'></div>
-        </div>
-
-        <div class="form-group d-flex justify-content-end">
-          <button type="submit" class="btn btn-outline-success" (click)='enviar()'>Enviar</button>
-        </div>
-      </div>
-    </div>
-
-  </form>
-</div>
-
-<!--/Formulario-->
 
 <app-rodape></app-rodape>

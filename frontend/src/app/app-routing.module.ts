@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminProdutoComponent } from './admin-produto/admin-produto.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { CategoriasComponent } from './categorias/categorias.component';
+import { ContatoComponent } from './contato/contato.component';
 import { DadosCompraComponent } from './dados-compra/dados-compra.component';
 import { DeleteCategoriaComponent } from './delete/delete-categoria/delete-categoria.component';
 import { DeleteProdutoComponent } from './delete/delete-produto/delete-produto.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'quem-somos', component: QuemsomosComponent },
   { path: 'dados-compra/:id', component: DadosCompraComponent },
   { path: 'usuario-produto', component: UsuarioProdutoComponent },
+  { path: 'contato', component: ContatoComponent},
 
 
   { path: 'edit-categoria/:id', component: EditCategoriaComponent },

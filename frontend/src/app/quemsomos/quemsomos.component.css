@@ -35,7 +35,7 @@ font-size: 30px;
 }
 
 .flip-card-inner {
-  position: relative;
+   position: relative;
   width: 100%;
   height: 100%;
   text-align: center;
@@ -69,7 +69,7 @@ font-size: 30px;
 
 .margin{
   margin: 0px 0px 0px -90px;
- ;
+ 
 }
 
 
