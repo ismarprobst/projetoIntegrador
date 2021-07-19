@@ -1,0 +1,77 @@
+<app-menu *ngIf='!auth.logado()'></app-menu>
+<app-menu2 *ngIf='auth.logado()'></app-menu2>
+
+
+
+<!--Formulario-->
+
+<div class="container mt-5 bg">
+  <div class="jumbotron jumbotron-fluid jbcor">
+    <h1 class="text-center mb-4" id="formulario-contato">Fale conosco</h1>
+    <div class="row d-flex align-items-center">
+
+      <div class="col-md-6">
+        <img class="img-fluid"src="../../assets/img/Social media (1).gif" alt="">
+      </div>
+
+      <div class="col-md-6 mt-5">
+
+        <form #f="ngForm">
+          <input type="text" class="form-control" id='nome' placeholder="Nome Completo">
+          <div class="form-group">
+
+            <label for="exampleFormControlInput1"></label>
+            <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com">
+          </div>
+
+
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1"></label>
+            <textarea class="form-control" style="resize: none" id="exampleFormControlTextarea1"
+              placeholder="Deixe sua mensagem" rows="3" id="assunto"></textarea>
+            <div id='txtAssunto'></div>
+          </div>
+        </form>
+
+          <div class="form-group d-flex justify-content-end">
+            <button type="submit" class="btn btn-outline-success" (click)='enviar()'>Enviar</button>
+
+          </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
+
+
+<!--/Formulario-->
+
+
+<!--Mapa-->
+
+<div class="jumbotron jumbotron-fluid cor-jumb1 mb-0">
+  <div class="container">
+    <div class="row d-flex align-items-center">
+    <div class="col-md-12">
+      <div class="ml-60">
+        <h3 class="text-justify mb-4">Endereço</h3>
+        <p class="text-justify">
+          E-N@TU </p>
+        <p class="text-justify">
+          Av. Paulista, 000 - Bela Vista | São Paulo
+        </p>
+
+      </div>
+      <iframe class="w-200 img-fluid "
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0658301189783!2d-46.65298398554282!3d-23.56607906765044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1626629693737!5m2!1spt-BR!2sbr"
+        width="1050" height="450" style="border:0;" allowfullscreen="" loading="lazy" id='mapa'></iframe>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<app-rodape></app-rodape>
